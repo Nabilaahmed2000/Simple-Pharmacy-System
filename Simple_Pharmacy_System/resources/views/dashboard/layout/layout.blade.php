@@ -82,5 +82,6 @@
 <script src="{{ asset ('adminAssets/js/demo.js')}}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{ asset ('adminAssets/js/pages/dashboard.js')}}"></script>
+
 </body>
 </html>

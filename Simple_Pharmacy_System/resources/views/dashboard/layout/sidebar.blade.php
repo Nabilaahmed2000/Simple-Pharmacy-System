@@ -18,7 +18,7 @@
         </div>
       </div>
 
-   
+
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
@@ -26,7 +26,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
             <li class="nav-item">
-                <a href="pages/gallery.html" class="nav-link">
+                <a href="/" class="nav-link">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                     <p>
                         Dashboard
@@ -44,18 +44,18 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item child-tab">
-                <a href="pages/layout/top-nav.html" class="nav-link">
+                <a href="{{route('pharmacyOwners.index')}}" class="nav-link">
                   <i class="fas fa-users"></i>
                   <p>All Pharmacy Owners</p>
                 </a>
               </li>
               <li class="nav-item child-tab">
-                    <a href="pages/layout/top-nav-sidebar.html" class="nav-link">
+                    <a href="{{route('pharmacyOwners.create')}}" class="nav-link">
                         <i class="fas fa-user-plus"></i>
                         <p>Add Pharmacy Owner</p>
                     </a>
               </li>
-            
+
             </ul>
           </li>
           <li class="nav-item">
@@ -68,18 +68,18 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item child-tab">
-                <a href="pages/layout/top-nav.html" class="nav-link">
+                <a href="{{route('doctors.index')}}" class="nav-link">
                   <i class="fas fa-users"></i>
                   <p>All Doctors</p>
                 </a>
               </li>
               <li class="nav-item child-tab">
-                    <a href="pages/layout/top-nav-sidebar.html" class="nav-link">
+                    <a href="{{route('doctors.create')}}" class="nav-link">
                         <i class="fas fa-user-plus"></i>
                         <p>Add new doctor</p>
                     </a>
               </li>
-            
+
             </ul>
           </li>
           <li class="nav-item">
