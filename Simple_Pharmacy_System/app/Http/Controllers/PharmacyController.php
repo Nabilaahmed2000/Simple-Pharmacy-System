@@ -56,7 +56,7 @@ class PharmacyController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        return redirect()->route('dashboard.pharmacy.index');
+        return redirect()->route('dashboard.pharmacy.index',['user'=>1]);
         //
     }
 
