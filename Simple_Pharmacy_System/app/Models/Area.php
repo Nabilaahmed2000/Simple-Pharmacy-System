@@ -10,7 +10,7 @@ class Area extends Model
     use HasFactory;
     protected $fillable = [
         'name',
-        'address',
+
     ];
 
     public function pharmacyLocations()
@@ -18,7 +18,7 @@ class Area extends Model
         return $this->hasMany(PharmacyLocation::class);
     }
 
-    //not sure if this is correct 
+    //not sure if this is correct
     public function doctors()
     {
         return $this->hasMany(Doctor::class);
