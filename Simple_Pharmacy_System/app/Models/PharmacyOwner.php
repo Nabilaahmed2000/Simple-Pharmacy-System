@@ -16,4 +16,10 @@ class PharmacyOwner extends Model
         'password',
         'image',
     ];
+
+    //if owner has more than one pharmacy ,please check it
+    public function pharmacyLocations()
+    {
+        return $this->hasMany(PharmacyLocation::class);
+    }
 }

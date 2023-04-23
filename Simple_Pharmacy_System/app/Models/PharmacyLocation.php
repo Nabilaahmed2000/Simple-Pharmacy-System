@@ -13,4 +13,11 @@ class PharmacyLocation extends Model
         'area_id',
         'priority',
     ];
+
+    public function area()
+    {
+        return $this->belongsTo(Area::class);
+    }
+
+    
 }
