@@ -12,4 +12,15 @@ class Area extends Model
         'name',
         'address',
     ];
+
+    public function pharmacyLocations()
+    {
+        return $this->hasMany(PharmacyLocation::class);
+    }
+
+    //not sure if this is correct 
+    public function doctors()
+    {
+        return $this->hasMany(Doctor::class);
+    }
 }
