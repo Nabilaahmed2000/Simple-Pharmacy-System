@@ -14,4 +14,15 @@ class Drug extends Model
         'type',
         'price',
     ];
+
+    public function orders()
+    {
+        return $this->belongsToMany(Order::class);
+    }
+
+    //to specify which pharmacy location has this drug
+    public function pharmacyLocations()
+    {
+        return $this->belongsToMany(PharmacyLocation::class);
+    }
 }

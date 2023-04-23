@@ -16,4 +16,15 @@ class Doctor extends Model
         'image',
         'is_baned',
     ];
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
+
+    //if doctor related to specific area
+    public function pharmacyLocations()
+    {
+        return $this->hasMany(PharmacyLocation::class);
+    }
 }
