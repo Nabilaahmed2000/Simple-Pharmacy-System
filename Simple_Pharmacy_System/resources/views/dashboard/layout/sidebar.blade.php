@@ -18,7 +18,7 @@
         </div>
       </div>
 
-   
+
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
@@ -55,7 +55,7 @@
                         <p>Add Pharmacy Owner</p>
                     </a>
               </li>
-            
+
             </ul>
           </li>
           <li class="nav-item">
@@ -79,11 +79,11 @@
                         <p>Add new doctor</p>
                     </a>
               </li>
-            
+
             </ul>
           </li>
           <li class="nav-item">
-                <a href="pages/gallery.html" class="nav-link">
+                <a href="{{ route('dashboard.users.index') }}" class="nav-link">
                 <i class="nav-icon fas fa-user"></i>
                     <p>
                         Users
@@ -100,13 +100,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item child-tab">
-                <a href="pages/layout/top-nav.html" class="nav-link">
+                <a href="{{ route('dashboard.pharmacy.index') }}" class="nav-link">
                 <i class="fas fa-building-shield"></i>
                   <p>All Pharmacies</p>
                 </a>
               </li>
               <li class="nav-item child-tab">
-                    <a href="pages/layout/top-nav-sidebar.html" class="nav-link">
+                    <a href="{{ route('dashboard.pharmacy.create') }}" class="nav-link">
                     <i class="fas fa-plus"></i>
                         <p>Add new Pharmacy</p>
                     </a>
@@ -123,13 +123,13 @@
                 </a>
                 <ul class="nav nav-treeview">
                 <li class="nav-item child-tab">
-                    <a href="pages/layout/top-nav.html" class="nav-link">
+                    <a href="{{ route('dashboard.medicine.index') }}" class="nav-link">
                     <i class="fas fa-pills"></i>
                     <p>All Medicines</p>
                     </a>
                 </li>
                 <li class="nav-item child-tab">
-                        <a href="pages/layout/top-nav-sidebar.html" class="nav-link">
+                        <a href="{{ route('dashboard.medicine.create') }}" class="nav-link">
                         <i class="fas fa-plus"></i>
                             <p>Add new Medicine</p>
                         </a>
