@@ -32,6 +32,32 @@ class User extends Authenticatable
         'password',
     ];
 
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
+
+    //the user has many addresses
+    public function areas()
+    {
+        return $this->belongsToMany(Area::class);
+    }
+
+    //the user has one location in area
+    // if user has more than one location in area ,please check it
+    public function area()
+    {
+        return $this->belongsTo(Area::class);
+    }
+
+    //the user has many drugs
+    public function drugs()
+    {
+        return $this->belongsToMany(Drug::class);
+    }
+
+    
+
     /**
      * The attributes that should be hidden for serialization.
      *
