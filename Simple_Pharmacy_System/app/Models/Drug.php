@@ -15,11 +15,13 @@ class Drug extends Model
         'price',
     ];
 
+    // many to many,  @author: mariam
     public function orders()
     {
         return $this->belongsToMany(Order::class);
     }
 
+    // many to many,  @author: mariam
     //to specify which pharmacy location has this drug
     public function pharmacyLocations()
     {

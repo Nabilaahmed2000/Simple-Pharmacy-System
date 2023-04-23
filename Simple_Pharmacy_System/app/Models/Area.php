@@ -13,12 +13,14 @@ class Area extends Model
         'address',
     ];
 
+    // one to many, i guess, @author: mariam
     public function pharmacyLocations()
     {
         return $this->hasMany(PharmacyLocation::class);
     }
 
-    //not sure if this is correct 
+    // is there a relationship between area and doctor?  @author: mariam
+    //not sure if this is correct
     public function doctors()
     {
         return $this->hasMany(Doctor::class);

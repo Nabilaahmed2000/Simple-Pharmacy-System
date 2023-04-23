@@ -12,10 +12,12 @@ class Order extends Model
     protected $fillable = [
         'user_id',
         'doctor_id',
-        'address',
+        'area_id',// @author:mariam
         'status',
         'is_insured',
     ];
+
+    // can we only use many to many? @author: mariam
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -25,5 +27,16 @@ class Order extends Model
     {
         return $this->belongsTo(Doctor::class);
     }
+    
+    // @author :mariam
+    public function pharmacyLocation()
+    {
+        return $this->belongsTo(PharmacyLocation::class);
+    }
 
+    // // many to many :author mariam
+    // public function users()
+    // {
+    //     return $this->belongsToMany(User::class);
+    // }
 }
