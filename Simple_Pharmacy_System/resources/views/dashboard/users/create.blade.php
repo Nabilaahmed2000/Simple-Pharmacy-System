@@ -32,7 +32,7 @@
                                 <h3 class="card-title">Add User</h3>
                             </div>
                             <div class="card-body">
-                                {{-- <form action="{{ route('dashboard.users.store') }}" method="POST">
+                                <form action="{{ route('users.store') }}" method="POST">
                                     @csrf
                                     <div class="input-group mb-3">
                                         <input type="text" class="form-control" placeholder="National Id"
@@ -78,7 +78,7 @@
                                     <div class="input-group mb-3">
                                         <button type="submit" class="btn btn-info">Add Doctor</button>
                                     </div>
-                                </form> --}}
+                                </form>
                             </div>
                             <!-- /.card-body -->
                         </div>

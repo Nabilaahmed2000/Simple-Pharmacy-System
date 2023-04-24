@@ -58,10 +58,14 @@
                                             <td>01234567890</td>
                                             <td>Xxx,ww,z</td>
                                             <td>
-                                                <a href="#" class="btn btn-primary">View</a>
-                                                <a href="#" class="btn btn-success">Edit</a>
-                                                <a href="#" class="btn btn-danger">Delete</a>
-
+                                                <a href="{{route('users.show',1 )}}" class="btn btn-primary">View</a>
+                                                <a href="{{route('users.edit',1 )}}" class="btn btn-success">Edit</a>
+                                                {{-- <a href="{{route('users.destroy',4)}}" class="btn btn-danger">Delete</a> --}}
+                                                <form action="{{ route('users.destroy', 4) }}" method="POST" class="d-inline">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                                </form>
                                           </td>
                                         </tr>
                                     </tbody>

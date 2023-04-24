@@ -32,7 +32,8 @@
                                 <h3 class="card-title">Update User</h3>
                             </div>
                             <div class="card-body">
-                                {{-- <form action="{{ route('dashboard.users.update' , $user['id']) }}" method="POST">
+                                {{-- $user['id'] --}}
+                                <form action="{{ route('users.update' , 1) }}" method="POST">
                                     @csrf
                                     @method('PUT')
                                     <div class="input-group mb-3">
@@ -78,7 +79,7 @@
                                     <div class="input-group mb-3">
                                         <button type="submit" class="btn btn-info">Update Doctor</button>
                                     </div>
-                                </form> --}}
+                                </form> 
                             </div>
                             <!-- /.card-body -->
                         </div>
