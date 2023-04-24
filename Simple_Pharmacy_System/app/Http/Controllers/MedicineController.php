@@ -11,7 +11,7 @@ class MedicineController extends Controller
      */
     public function index()
     {
-        $drugs=Drug::all();
+        $drugs=Drug::paginate(10);
         return view('dashboard.medicine.index',['drugs' =>$drugs]);
     }
 
@@ -33,7 +33,7 @@ class MedicineController extends Controller
         if($request->hasFile('image')){
             $file_extension=$request->image->getClientOriginalExtension();
             $file_name=time().'.'.$file_extension;
-            $path ='images/posts';
+            $path ='images/drugs';
             $request->file('image')->move( $path,$file_name);
             Drug::create([
                 'name' => $data['name'],
@@ -62,6 +62,7 @@ class MedicineController extends Controller
     public function show(string $id)
     {
         $drug=Drug::find($id);
+        // dd($drug->image);
         return view('dashboard.medicine.show',['drug' =>$drug]);
         //
     }
@@ -71,7 +72,8 @@ class MedicineController extends Controller
      */
     public function edit(string $id)
     {
-        return view('dashboard.medicine.update');
+        $drug=Drug::all()->where('id',$id);
+        return view('dashboard.medicine.update',['drugs' =>$drug]);
         //
     }
 
@@ -80,7 +82,21 @@ class MedicineController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $drug=Drug::find($id);
+        $drug->name = $request->name;
+        $drug->price = $request->price;
+        $drug->quantity = $request->quantity;
+
+        // Handle the image upload (if there is one)
+        // dd($request);
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $filename = $image->getClientOriginalName();
+            $image->storeAs('images/drugs', $filename);
+            $drug->image = $filename;
+        }
+        // Save the updated drug to the database
+        $drug->save();
         return redirect()->route('dashboard.medicine.index');
     }
 
@@ -89,6 +105,7 @@ class MedicineController extends Controller
      */
     public function destroy(string $id)
     {
+        $deleted = Drug::where('id', $id)->delete();
         return view('dashboard.medicine.index');
         //
     }

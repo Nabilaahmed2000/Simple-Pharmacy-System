@@ -2,6 +2,16 @@
 @extends('dashboard.layout.layout')
 
 <!-- yeild body -->
+@foreach ($drugs as $drug)
+@php    
+        $id=$drug->id ;
+        $name=$drug->name;
+        $quantity=$drug->quantity;
+        $price=$drug->price;
+        $image=$drug->image;
+
+@endphp
+@endforeach
 @section('body')
 <div class="content-wrapper">
     <!-- /.content-header -->
@@ -32,12 +42,12 @@
                             <h3 class="card-title">Update Medicine</h3>
                         </div>
                         <div class="card-body">
-                            <form action="{{ route('dashboard.medicine.update' ,1) }}" method="POST">
+                            <form action="{{ route('dashboard.medicine.update' ,$id) }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
 
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control" placeholder="Name" name="name">
+                                    <input type="text" class="form-control" placeholder="Name" name="name" value="{{$name}}">
                                     <div class="input-group-append">
                                         <span class="input-group-text"><i class="fas fa-check"></i></span>
                                     </div>
@@ -47,21 +57,27 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="fas fa-envelope"></i></span>
                                     </div>
-                                    <input type="number" class="form-control" placeholder="Quantity" name="quantity">
+                                    <input type="number" class="form-control" placeholder="Quantity" name="quantity" value="{{$quantity}}">
                                 </div>
 
                                 <div class="input-group mb-3">
                                     <input type="text" class="form-control" placeholder="Type"
-                                        name="type">
+                                        name="type" value="medical">
                                     <div class="input-group-append">
                                         <span class="input-group-text"><i class="fas fa-check"></i></span>
                                     </div>
                                 </div>
 
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control" placeholder="Price" name="price">
+                                    <input type="text" class="form-control" placeholder="Price" name="price" value="{{$price}}">
                                     <div class="input-group-append">
                                         <span class="input-group-text"><i class="fas fa-check"></i></span>
+                                    </div>
+                                </div>
+                                <div class="input-group mb-3">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="image" name="image">
+                                        <label class="custom-file-label" for="image">Choose file</label>
                                     </div>
                                 </div>
                                 <div class="input-group mb-3">

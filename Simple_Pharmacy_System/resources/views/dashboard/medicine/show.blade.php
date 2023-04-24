@@ -37,7 +37,7 @@
                                         <h3 class="d-inline-block d-sm-none">LOWA Men’s Renegade GTX Mid Hiking Boots Review
                                         </h3>
                                         <div class="col-12">
-                                            <img src="{{ asset('adminAssets/img/prod-1.jpg') }}" class="product-image"
+                                            <img src="{{asset ('images/drugs/'.$drug->image) }}" class="product-image"
                                                 alt="Product Image">
                                         </div>
                                     </div>

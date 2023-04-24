@@ -43,17 +43,19 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    @foreach($drugs as $drug)
                                         <tr>
-                                            <td>drug 1</td>
-                                            <td>1</td>
+                                            <td>{{$drug['name']}}</td>
+                                            <td>{{$drug['quantity']}}</td>
                                             <td>medical</td>
-                                            <td>12.5</td>
+                                            <td>{{$drug['price']}}</td>
                                             <td>
-                                                <a href="{{route('dashboard.medicine.show',1)}}" class="btn btn-primary">View</a>
-                                                <a href="{{route('dashboard.medicine.edit',1)}}" class="btn btn-success">Edit</a>
-                                                <a href="{{route('dashboard.medicine.destroy',1)}}" class="btn btn-danger">Delete</a>
+                                                <a href="{{route('dashboard.medicine.show',$drug['id'])}}" class="btn btn-primary">View</a>
+                                                <a href="{{route('dashboard.medicine.edit',$drug['id'])}}" class="btn btn-success">Edit</a>
+                                                <a href="{{route('dashboard.medicine.destroy',$drug['id'])}}" class="btn btn-danger">Delete</a>
                                             </td>
                                         </tr>
+                                    @endforeach
                                     </tbody>
                                 </table>
                             </div>

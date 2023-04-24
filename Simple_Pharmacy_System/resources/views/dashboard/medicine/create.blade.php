@@ -32,8 +32,10 @@
                             <h3 class="card-title">Add Medicine</h3>
                         </div>
                         <div class="card-body">
-                            <form action="{{ route('dashboard.medicine.store') }}" method="POST">
+                            <form action="{{ route('dashboard.medicine.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
+                                @method('POST')
+
 
                                 <div class="input-group mb-3">
                                     <input type="text" class="form-control" placeholder="Name" name="name">
@@ -61,6 +63,12 @@
                                     <input type="text" class="form-control" placeholder="Price" name="price">
                                     <div class="input-group-append">
                                         <span class="input-group-text"><i class="fas fa-check"></i></span>
+                                    </div>
+                                </div>
+                                <div class="input-group mb-3">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="image" name="image">
+                                        <label class="custom-file-label" for="image">Choose file</label>
                                     </div>
                                 </div>
                                 <div class="input-group mb-3">
