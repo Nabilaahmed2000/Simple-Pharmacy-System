@@ -43,14 +43,24 @@ class PermissionSeeder extends Seeder
 //
 //        Pharmacy::create([
 //            'name' => 'Test Pharmacy',
-//            'image' => 'https://i.pravatar.cc/150?img=1',
-//            'area_id' => 1,
+//            'area_id' => 4,
 //            'priority' => 1,
 //        ]);
 
-        $doctor = Doctor::find(1);
 
-        $doctor->assignRole('owner');
+       Doctor::create([
+            'name' => 'nabila Doctor',
+            'email' => 'nabila@gmail.com',
+            'national_id' => '923456789',
+            'password' => '123456789',
+            'pharmacy_id' =>8,
+            'image' => '1.jpg',
+
+
+        ])->assignRole('doctor');
+//        $doctor = Doctor::find(5);
+////
+//        $doctor->assignRole('owner');
 
 
 
