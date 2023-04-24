@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserUpdateRequest;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -20,7 +22,6 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('dashboard.users.create');
         //
     }
 
@@ -29,7 +30,6 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        return redirect()->route('dashboard.users.index');
         //
     }
 
@@ -38,7 +38,6 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
-        return view('dashboard.users.show');
         //
     }
 
@@ -47,17 +46,28 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        return view('dashboard.users.update');
         //
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UserUpdateRequest $request, User $user)
     {
-        return redirect()->route('dashboard.users.index');
-        //
+        $user->fill($request->except('password', 'image'));
+        if($request->has('password')){
+            $user->password = bcrypt($request->password);
+        }
+        if($request->has('image')){
+            $name = $request->image->getClientOriginalName();
+            $request->image->move(public_path('images'), $name);
+            if($user->image && file_exists(public_path('images/' . $user->image))){
+                unlink(public_path('images/' . $user->image));
+            }
+            $user->image = $name;
+        }
+        $user->save();
+
     }
 
     /**
@@ -65,7 +75,6 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        return view('dashboard.users.index');
         //
     }
 }
