@@ -41,29 +41,29 @@ Route::prefix('dashboard')->group(function () {
     Route::delete('/doctors/{doctor}', [DoctorController::class, 'destroy'])->name('doctors.destroy');
 
     //**************users routes******************
-    Route::get('/users', [UserController::class, 'index'])->name('dashboard.users.index');
-    Route::get('/users/create', [UserController::class, 'create'])->name('dashboard.users.create');
-    Route::post('/users', [UserController::class, 'store'])->name('dashboard.users.store');
-    Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('dashboard.users.edit');
-    Route::put('/users/{user}', [UserController::class, 'update'])->name('dashboard.users.update');
-    Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('dashboard.users.destroy');
-    Route::get('/users/{user}', [UserController::class, 'show'])->name('dashboard.users.show');
+    Route::get('/users', [UserController::class, 'index'])->name('users.index');
+    Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
+    Route::post('/users', [UserController::class, 'store'])->name('users.store');
+    Route::get('/users/{user}', [UserController::class, 'show'])->name('users.show');
+    Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
+    Route::put('/users/{user}', [UserController::class, 'update'])->name('users.update');
+    Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
 
     //**************pharmacy routes******************
-    Route::get('/pharmacy', [PharmacyController::class, 'index'])->name('dashboard.pharmacy.index');
-    Route::get('/pharmacy/create', [PharmacyController::class, 'create'])->name('dashboard.pharmacy.create');
-    Route::post('/pharmacy', [PharmacyController::class, 'store'])->name('dashboard.pharmacy.store');
-    Route::get('/pharmacy/{pharmacy}/edit', [PharmacyController::class, 'edit'])->name('dashboard.pharmacy.edit');
-    Route::put('/pharmacy/{pharmacy}', [PharmacyController::class, 'update'])->name('dashboard.pharmacy.update');
-    Route::delete('/pharmacy/{pharmacy}', [PharmacyController::class, 'destroy'])->name('dashboard.pharmacy.destroy');
-    Route::get('/pharmacy/{pharmacy}', [PharmacyController::class, 'show'])->name('dashboard.pharmacy.show');
+    Route::get('/pharmacy', [PharmacyController::class, 'index'])->name('pharmacy.index');
+    Route::get('/pharmacy/create', [PharmacyController::class, 'create'])->name('pharmacy.create');
+    Route::post('/pharmacy', [PharmacyController::class, 'store'])->name('pharmacy.store');
+    Route::get('/pharmacy/{pharmacy}/edit', [PharmacyController::class, 'edit'])->name('pharmacy.edit');
+    Route::put('/pharmacy/{pharmacy}', [PharmacyController::class, 'update'])->name('pharmacy.update');
+    Route::delete('/pharmacy/{pharmacy}', [PharmacyController::class, 'destroy'])->name('pharmacy.destroy');
+    Route::get('/pharmacy/{pharmacy}', [PharmacyController::class, 'show'])->name('pharmacy.show');
 
     //**************medicine routes******************
-    Route::get('/medicine', [MedicineController::class, 'index'])->name('dashboard.medicine.index');
-    Route::get('/medicine/create', [MedicineController::class, 'create'])->name('dashboard.medicine.create');
-    Route::post('/medicine', [MedicineController::class, 'store'])->name('dashboard.medicine.store');
-    Route::get('/medicine/{medicine}/edit', [MedicineController::class, 'edit'])->name('dashboard.medicine.edit');
-    Route::put('/medicine/{medicine}', [MedicineController::class, 'update'])->name('dashboard.medicine.update');
-    Route::delete('/medicine/{medicine}', [MedicineController::class, 'destroy'])->name('dashboard.medicine.destroy');
-    Route::get('/medicine/{medicine}', [MedicineController::class, 'show'])->name('dashboard.medicine.show');
+    Route::get('/medicine', [MedicineController::class, 'index'])->name('medicine.index');
+    Route::get('/medicine/create', [MedicineController::class, 'create'])->name('medicine.create');
+    Route::post('/medicine', [MedicineController::class, 'store'])->name('medicine.store');
+    Route::get('/medicine/{medicine}/edit', [MedicineController::class, 'edit'])->name('medicine.edit');
+    Route::put('/medicine/{medicine}', [MedicineController::class, 'update'])->name('medicine.update');
+    Route::delete('/medicine/{medicine}', [MedicineController::class, 'destroy'])->name('medicine.destroy');
+    Route::get('/medicine/{medicine}', [MedicineController::class, 'show'])->name('medicine.show');
 });

@@ -50,9 +50,13 @@
                                             <td>medical</td>
                                             <td>12.5</td>
                                             <td>
-                                                <a href="#" class="btn btn-primary">View</a>
-                                                <a href="#" class="btn btn-success">Edit</a>
-                                                <a href="#" class="btn btn-danger">Delete</a>
+                                                <a href="{{route('medicine.show',1 )}}" class="btn btn-primary">View</a>
+                                                <a href="{{route('medicine.edit',1 )}}" class="btn btn-success">Edit</a>
+                                                <form action="{{ route('medicine.destroy', 4) }}" method="POST" class="d-inline">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                                </form>
                                             </td>
                                         </tr>
                                     </tbody>

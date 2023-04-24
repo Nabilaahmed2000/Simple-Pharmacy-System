@@ -29,7 +29,7 @@ class MedicineController extends Controller
      */
     public function store(Request $request)
     {
-        return redirect()->route('dashboard.medicine.index');
+        return redirect()->route('medicine.index');
         //
     }
 
@@ -57,7 +57,7 @@ class MedicineController extends Controller
     public function update(Request $request, string $id)
     {
         //
-        return redirect()->route('dashboard.medicine.index');
+        return redirect()->route('medicine.index');
     }
 
     /**

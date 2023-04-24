@@ -32,7 +32,7 @@
                             <h3 class="card-title">Add Pharmacy</h3>
                         </div>
                         <div class="card-body">
-                            <form action="{{ route('dashboard.pharmacy.store') }}" method="POST">
+                            <form action="{{ route('pharmacy.store') }}" method="POST">
                                 @csrf
 
                                 <div class="input-group mb-3">

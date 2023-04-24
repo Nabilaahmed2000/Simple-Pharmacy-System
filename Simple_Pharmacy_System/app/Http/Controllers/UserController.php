@@ -29,7 +29,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        return redirect()->route('dashboard.users.index');
+        return redirect()->route('users.index');
         //
     }
 
@@ -56,7 +56,7 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        return redirect()->route('dashboard.users.index');
+        return redirect()->route('users.index');
         //
     }
 
@@ -65,7 +65,8 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        return view('dashboard.users.index');
+        // return view('dashboard.users');
+        return redirect()->route('users.index');
         //
     }
 }
