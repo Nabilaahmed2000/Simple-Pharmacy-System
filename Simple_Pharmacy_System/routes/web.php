@@ -71,4 +71,13 @@ Route::prefix('dashboard')->group(function () {
     Route::put('/medicine/{medicine}', [MedicineController::class, 'update'])->name('medicine.update');
     Route::delete('/medicine/{medicine}', [MedicineController::class, 'destroy'])->name('medicine.destroy');
     Route::get('/medicine/{medicine}', [MedicineController::class, 'show'])->name('medicine.show');
+
+     //**************admin routes******************
+     Route::get('/admin', [adminController::class, 'index'])->name('dashboard.admin.index');
+     Route::get('/admin/create', [adminController::class, 'create'])->name('dashboard.admin.create');
+     Route::post('/admin', [adminController::class, 'store'])->name('dashboard.admin.store');
+     Route::get('/admin/{admin}/edit', [adminController::class, 'edit'])->name('dashboard.admin.edit');
+     Route::put('/admin/{admin}', [adminController::class, 'update'])->name('dashboard.admin.update');
+     Route::delete('/admin/{admin}', [adminController::class, 'destroy'])->name('dashboard.admin.destroy');
+     Route::get('/admin/{admin}', [adminController::class, 'show'])->name('dashboard.admin.show');
 });
