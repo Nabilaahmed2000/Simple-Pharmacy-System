@@ -13,12 +13,15 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id');
-            $table->integer('doctor_id');
-            $table->string('address');
-            $table->string('status');
-            $table->boolean('is_insured');
-
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('doctor_id')->nullable()->constrained('doctors')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('address_id')->constrained('user_addresses');
+            $table->foreignId('pharmacy_id')->nullable()->constrained('pharmacies')->onDelete('cascade')->onUpdate('cascade');
+            $table->json('prescription');
+            $table->enum('status',['new','processing' ,'waiting_for_user_confirmation','canceled' ,'confirmed','delivered']);
+            $table->enum('created_by', ['user', 'pharmacy_owner' ,'doctor']);
+            $table->boolean('is_insured')->default(false);
+            $table->softDeletes();
             $table->timestamps();
         });
     }
