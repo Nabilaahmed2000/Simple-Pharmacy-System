@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\MedicineController;
 use App\Http\Controllers\AreaController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\AdminController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -87,5 +88,10 @@ Route::prefix('dashboard')->group(function () {
     Route::delete('/order/{order}', [OrderController::class, 'destroy'])->name('dashboard.order.destroy');
     Route::get('/order/{order}', [OrderController::class, 'show'])->name('dashboard.order.show');
 
+    //**************admin routes******************
+    Route::get('/admin/{admin}/edit', [AdminController::class, 'edit'])->name('dashboard.admin.edit');
+    Route::put('/admin/{admin}', [AdminController::class, 'update'])->name('dashboard.admin.update');
+    Route::get('/admin/{admin}', [AdminController::class, 'show'])->name('dashboard.admin.show');
+    
     
 });
