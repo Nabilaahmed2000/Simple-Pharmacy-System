@@ -80,4 +80,22 @@ Route::prefix('dashboard')->group(function () {
      Route::put('/admin/{admin}', [adminController::class, 'update'])->name('dashboard.admin.update');
      Route::delete('/admin/{admin}', [adminController::class, 'destroy'])->name('dashboard.admin.destroy');
      Route::get('/admin/{admin}', [adminController::class, 'show'])->name('dashboard.admin.show');
+
+     //**************area routes******************
+     Route::get('/area', [areaController::class, 'index'])->name('dashboard.area.index');
+     Route::get('/area/create', [areaController::class, 'create'])->name('dashboard.area.create');
+     Route::post('/area', [areaController::class, 'store'])->name('dashboard.area.store');
+     Route::get('/area/{area}/edit', [areaController::class, 'edit'])->name('dashboard.area.edit');
+     Route::put('/area/{area}', [areaController::class, 'update'])->name('dashboard.area.update');
+     Route::delete('/area/{area}', [areaController::class, 'destroy'])->name('dashboard.area.destroy');
+     Route::get('/area/{area}', [areaController::class, 'show'])->name('dashboard.area.show');
+
+     //**************order routes******************
+     Route::get('/order', [orderController::class, 'index'])->name('dashboard.order.index');
+     Route::get('/order/create', [orderController::class, 'create'])->name('dashboard.order.create');
+     Route::post('/order', [orderController::class, 'store'])->name('dashboard.order.store');
+     Route::get('/order/{order}/edit', [orderController::class, 'edit'])->name('dashboard.order.edit');
+     Route::put('/order/{order}', [orderController::class, 'update'])->name('dashboard.order.update');
+     Route::delete('/order/{order}', [orderController::class, 'destroy'])->name('dashboard.order.destroy');
+     Route::get('/order/{order}', [orderController::class, 'show'])->name('dashboard.order.show');
 });
