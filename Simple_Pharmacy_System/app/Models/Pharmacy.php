@@ -11,7 +11,6 @@ class Pharmacy extends Model
 
     protected $fillable = [
         'name',
-        'image',
         'area_id',
         'priority',
     ];
