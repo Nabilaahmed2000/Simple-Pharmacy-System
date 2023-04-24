@@ -11,8 +11,8 @@ class Drug extends Model
     protected $fillable = [
         'name',
         'quantity',
-        'type',
         'price',
+        'image',
     ];
 
     public function orders()
@@ -20,9 +20,14 @@ class Drug extends Model
         return $this->belongsToMany(Order::class);
     }
 
-    //to specify which pharmacy location has this drug
-    public function pharmacyLocations()
+
+    public function getPriceAttribute($value)
     {
-        return $this->belongsToMany(PharmacyLocation::class);
+        return $value / 100;
+    }
+
+    public function setPriceAttribute($value)
+    {
+        $this->attributes['price'] = $value * 100;
     }
 }

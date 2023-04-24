@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserUpdateRequest;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -20,7 +22,6 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('dashboard.users.create');
         //
     }
 
@@ -38,7 +39,6 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
-        return view('dashboard.users.show');
         //
     }
 
@@ -47,14 +47,13 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        return view('dashboard.users.update');
         //
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UserUpdateRequest $request, User $user)
     {
         return redirect()->route('users.index');
         //

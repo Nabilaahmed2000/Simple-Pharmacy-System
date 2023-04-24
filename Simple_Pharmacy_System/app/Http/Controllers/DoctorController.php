@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Doctor;
 use Illuminate\Http\Request;
 
 class DoctorController extends Controller
@@ -11,6 +12,7 @@ class DoctorController extends Controller
      */
     public function index()
     {
+        return  Doctor::role('doctor')->get();
         return view('dashboard.doctors.index');
     }
 
@@ -27,7 +29,17 @@ class DoctorController extends Controller
      */
     public function store(Request $request)
     {
-        return redirect()->route('doctors.index');
+//        $doctor=Doctor::create([
+//            'name' => 'Test Doctor',
+//            'email' => 'somaya@gmail.com',
+//            'national_id' => '123456789',
+//            'password' => '123456789',
+//            'image' => 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.com%2Fpremium-vecto',
+//
+//
+//        ]);
+//        return $doctor;
+       return redirect()->route('doctors.index');
     }
 
     /**

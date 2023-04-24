@@ -29,7 +29,6 @@
                         <div class="card">
                             <div class="card-header">
                                 <h1 class="card-title">All Medicines Table</h1>
-                                {{-- <h3 class="card-title">DataTable with default features</h3> --}}
                             </div>
                             <!-- /.card-header -->
                             <div id="example1_wrapper" class="card-body">

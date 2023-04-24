@@ -6,6 +6,9 @@ use App\Http\Controllers\PharmacyOwnerController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MedicineController;
+use App\Http\Controllers\AreaController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\AdminController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,6 +23,8 @@ use App\Http\Controllers\MedicineController;
 Route::get('/', function () {
     return view('dashboard.reports');
 });
+
+
 
 Route::prefix('dashboard')->group(function () {
     //*************pharmacy owner routes */

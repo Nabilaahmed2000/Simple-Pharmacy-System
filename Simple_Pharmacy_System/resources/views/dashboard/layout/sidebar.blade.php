@@ -14,7 +14,7 @@
           <img src="{{ asset ('adminAssets/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="{{ route('dashboard.admin.show',1) }}" class="d-block">Alexander Pierce</a>
         </div>
       </div>
 
@@ -147,14 +147,16 @@
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item child-tab">
-                        <a href="pages/layout/top-nav.html" class="nav-link">
-                        <i class="fas fa-map-location"></i>
+
+                    <!-- all pharmacy area route -->
+                    <a href="{{ route('dashboard.area.index') }}" class="nav-link">
+                    <i class="fas fa-map-location"></i>
                         <p>All Pharmacy Area</p>
                         </a>
                     </li>
                     <li class="nav-item child-tab">
-                            <a href="pages/layout/top-nav-sidebar.html" class="nav-link">
-                            <i class="fa fa-plus"></i>
+                            <a href="{{ route('dashboard.area.create') }}" class="nav-link">
+                            <i class="fas fa-plus"></i>
                                 <p>Add new Pharmacy Area</p>
                             </a>
                     </li>
@@ -171,7 +173,7 @@
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item child-tab">
-                        <a href="pages/layout/top-nav.html" class="nav-link">
+                        <a href="{{ route('dashboard.order.index') }}" class="nav-link">
                         <i class="fas fa-shopping-cart"></i>
                         <p>
                             All Orders
@@ -179,7 +181,7 @@
                         </a>
                     </li>
                     <li class="nav-item child-tab">
-                            <a href="pages/layout/top-nav-sidebar.html" class="nav-link">
+                            <a href="{{ route('dashboard.order.create') }}" class="nav-link">
                             <i class="fa fa-plus"></i>
                                 <p>
                                     Add new Order
