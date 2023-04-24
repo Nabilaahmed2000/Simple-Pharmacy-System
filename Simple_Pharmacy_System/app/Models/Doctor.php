@@ -15,6 +15,7 @@ class Doctor extends Authenticatable
         'email',
         'password',
         'image',
+        'pharmacy_id',
         'is_baned',
     ];
 
@@ -24,6 +25,11 @@ class Doctor extends Authenticatable
     {
         return $query->where('is_banned', false);
     }
+//    public function scopeOwner($query)
+//    {
+//
+//        return Doctor::role('owner')->get();
+//    }
 
     public function orders()
     {
