@@ -6,6 +6,8 @@ use App\Http\Controllers\PharmacyOwnerController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MedicineController;
+use App\Http\Controllers\AreaController;
+use App\Http\Controllers\OrderController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -66,4 +68,24 @@ Route::prefix('dashboard')->group(function () {
     Route::put('/medicine/{medicine}', [MedicineController::class, 'update'])->name('dashboard.medicine.update');
     Route::delete('/medicine/{medicine}', [MedicineController::class, 'destroy'])->name('dashboard.medicine.destroy');
     Route::get('/medicine/{medicine}', [MedicineController::class, 'show'])->name('dashboard.medicine.show');
+
+    //**************Pharmacy Area routes******************
+    Route::get('/area', [AreaController::class, 'index'])->name('dashboard.area.index');
+    Route::get('/area/create', [AreaController::class, 'create'])->name('dashboard.area.create');
+    Route::post('/area', [AreaController::class, 'store'])->name('dashboard.area.store');
+    Route::get('/area/{area}/edit', [AreaController::class, 'edit'])->name('dashboard.area.edit');
+    Route::put('/area/{area}', [AreaController::class, 'update'])->name('dashboard.area.update');
+    Route::delete('/area/{area}', [AreaController::class, 'destroy'])->name('dashboard.area.destroy');
+    Route::get('/area/{area}', [AreaController::class, 'show'])->name('dashboard.area.show');
+
+    //**************order routes******************
+    Route::get('/order', [OrderController::class, 'index'])->name('dashboard.order.index');
+    Route::get('/order/create', [OrderController::class, 'create'])->name('dashboard.order.create');
+    Route::post('/order', [OrderController::class, 'store'])->name('dashboard.order.store');
+    Route::get('/order/{order}/edit', [OrderController::class, 'edit'])->name('dashboard.order.edit');
+    Route::put('/order/{order}', [OrderController::class, 'update'])->name('dashboard.order.update');
+    Route::delete('/order/{order}', [OrderController::class, 'destroy'])->name('dashboard.order.destroy');
+    Route::get('/order/{order}', [OrderController::class, 'show'])->name('dashboard.order.show');
+
+    
 });
