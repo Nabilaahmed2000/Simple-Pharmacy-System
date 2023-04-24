@@ -4,20 +4,19 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Webpatser\Countries\Countries;
 
 class Area extends Model
 {
     use HasFactory;
     protected $fillable = [
         'name',
-        'address',
+        'country_id',
     ];
 
-    // one to many, i guess, @author: mariam
-    public function pharmacyLocations()
+    public function country()
     {
-        return $this->hasMany(PharmacyLocation::class);
+        return $this->hasMany(Countries::class);
     }
-
 
 }

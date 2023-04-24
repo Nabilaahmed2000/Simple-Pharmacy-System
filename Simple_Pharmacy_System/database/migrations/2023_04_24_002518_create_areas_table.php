@@ -11,14 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pharmacy_owners', function (Blueprint $table) {
+        Schema::create('areas', function (Blueprint $table) {
             $table->id();
-            $table->string('national_id')->unique();
             $table->string('name');
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->string('image');
-            $table->softDeletes();
+            $table->foreignId('country_id')->constrained('countries');
             $table->timestamps();
         });
     }
@@ -28,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pharmacy_owners');
+        Schema::dropIfExists('areas');
     }
 };

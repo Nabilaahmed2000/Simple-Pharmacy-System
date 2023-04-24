@@ -19,6 +19,7 @@ Route::get('/', function () {
     return view('dashboard.index');
 });
 
+
 Route::prefix('dashboard')->group(function(){
     Route::get('/users', [UserController::class,'index'])->name('dashboard.users.index');
     Route::get('/users/create', [UserController::class, 'create'])->name('dashboard.users.create');
@@ -29,13 +30,7 @@ Route::prefix('dashboard')->group(function(){
     Route::get('/users/{post}', [UserController::class, 'show'])->name('dashboard.users.show');
 
 
-    Route::get('/pharmacy', [PharmacyController::class, 'index'])->name('dashboard.pharmacy.index');
-    Route::get('/pharmacy/create', [PharmacyController::class, 'create'])->name('dashboard.pharmacy.create');
-    Route::post('/pharmacy', [PharmacyController::class, 'store'])->name('dashboard.pharmacy.store');
-    Route::get('/pharmacy/{comment}/edit', [PharmacyController::class, 'edit']) ->name('dashboard.pharmacy.edit');
-    Route::put('/pharmacy/{comment}', [PharmacyController::class, 'update']) ->name('dashboard.pharmacy.update');
-    Route::delete('/pharmacy/{comment}', [PharmacyController::class, 'destroy'])->name('dashboard.pharmacy.destroy');
-    Route::get('/pharmacy/{comment}', [PharmacyController::class, 'show'])->name('dashboard.pharmacy.show');
+    Route::resource('pharmacy', PharmacyController::class);
 
     Route::get('/medicine', [MedicineController::class, 'index'])->name('dashboard.medicine.index');
     Route::get('/medicine/create', [MedicineController::class, 'create'])->name('dashboard.medicine.create');

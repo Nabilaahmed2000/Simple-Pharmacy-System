@@ -11,15 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('doctors', function (Blueprint $table) {
+        Schema::create('order_drugs', function (Blueprint $table) {
             $table->id();
-            $table->string('national_id')->unique();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->string('image');
-            $table->boolean('is_baned');
-            $table->softDeletes();
+            $table->foreignId('order_id')->constrained('orders');
+            $table->foreignId('drug_id')->constrained('drugs');
+            $table->integer('quantity');
+            $table->integer('price');
             $table->timestamps();
         });
     }
@@ -29,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('doctors');
+        Schema::dropIfExists('order_drugs');
     }
 };

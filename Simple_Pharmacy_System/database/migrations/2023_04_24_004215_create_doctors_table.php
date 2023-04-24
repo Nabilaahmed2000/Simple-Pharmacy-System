@@ -11,18 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('doctors', function (Blueprint $table) {
             $table->id();
             $table->string('national_id')->unique();
             $table->string('name');
             $table->string('email')->unique();
-            $table->enum('gender', ['Male', 'Female', 'Other']);
-            $table->date('date_of_birth');
-            $table->string('phone');
-            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->timestamp('last_login_at')->nullable();
-            $table->rememberToken();
+            $table->string('image');
+            $table->foreignId('pharmacy_id')->constrained('pharmacies');
+            $table->boolean('is_banned')->default(false);
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -32,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('doctors');
     }
 };

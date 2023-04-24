@@ -14,13 +14,13 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('doctor_id')->constrained('doctors')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('pharmacy_owner_id')->constrained('pharmacy_owners')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('drug')->constrained('drugs')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('address');
+            $table->foreignId('doctor_id')->nullable()->constrained('doctors')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('address_id')->constrained('user_addresses');
+            $table->foreignId('pharmacy_id')->nullable()->constrained('pharmacies')->onDelete('cascade')->onUpdate('cascade');
+            $table->json('prescription');
             $table->enum('status',['new','processing' ,'waiting_for_user_confirmation','canceled' ,'confirmed','delivered']);
-            $table->enum('created_by',['user' , 'pharmacy_owner' ,'doctor']);
-            $table->boolean('is_insured');
+            $table->enum('created_by', ['user', 'pharmacy_owner' ,'doctor']);
+            $table->boolean('is_insured')->default(false);
             $table->softDeletes();
             $table->timestamps();
         });
