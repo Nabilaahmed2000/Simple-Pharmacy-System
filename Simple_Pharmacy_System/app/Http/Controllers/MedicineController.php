@@ -11,7 +11,8 @@ class MedicineController extends Controller
      */
     public function index()
     {
-        return view('dashboard.medicine.index');
+        $drugs=Drug::all();
+        return view('dashboard.medicine.index',['drugs' =>$drugs]);
     }
 
     /**
@@ -20,7 +21,6 @@ class MedicineController extends Controller
     public function create()
     {
         return view('dashboard.medicine.create');
-        //
     }
 
     /**
@@ -29,7 +29,29 @@ class MedicineController extends Controller
     public function store(Request $request)
     {
         $data=$request->all();
-        
+        // dd($data);
+        if($request->hasFile('image')){
+            $file_extension=$request->image->getClientOriginalExtension();
+            $file_name=time().'.'.$file_extension;
+            $path ='images/posts';
+            $request->file('image')->move( $path,$file_name);
+            Drug::create([
+                'name' => $data['name'],
+                'quantity' => $data['quantity'],
+                'price' => $data['price'],
+                'image'=>$file_name
+
+            ]);
+        }
+        else{
+            Drug::create([
+                'name' => $data['name'],
+                'quantity' => $data['quantity'],
+                'price' => $data['price'],
+                'image'=>'default.jpg'   
+            ]);
+        }
+
         return redirect()->route('dashboard.medicine.index');
         //
     }
