@@ -29,6 +29,7 @@ class PharmacyController extends Controller
      */
     public function store(Request $request)
     {
+        return redirect()->route('dashboard.pharmacy.index');
         //
     }
 
@@ -37,6 +38,7 @@ class PharmacyController extends Controller
      */
     public function show(string $id)
     {
+        return view('dashboard.pharmacy.show');
         //
     }
 
@@ -45,6 +47,7 @@ class PharmacyController extends Controller
      */
     public function edit(string $id)
     {
+        return view('dashboard.pharmacy.update');
         //
     }
 
@@ -53,6 +56,7 @@ class PharmacyController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        return redirect()->route('dashboard.pharmacy.index',['user'=>1]);
         //
     }
 
@@ -61,6 +65,7 @@ class PharmacyController extends Controller
      */
     public function destroy(string $id)
     {
+        return view('dashboard.pharmacy.index');
         //
     }
 }

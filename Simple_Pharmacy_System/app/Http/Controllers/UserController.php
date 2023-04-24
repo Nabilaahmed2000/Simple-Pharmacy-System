@@ -20,6 +20,7 @@ class UserController extends Controller
      */
     public function create()
     {
+        return view('dashboard.users.create');
         //
     }
 
@@ -28,6 +29,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        return redirect()->route('dashboard.users.index');
         //
     }
 
@@ -36,6 +38,7 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
+        return view('dashboard.users.show');
         //
     }
 
@@ -44,6 +47,7 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
+        return view('dashboard.users.update');
         //
     }
 
@@ -52,6 +56,7 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        return redirect()->route('dashboard.users.index');
         //
     }
 
@@ -60,6 +65,7 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
+        return view('dashboard.users.index');
         //
     }
 }
