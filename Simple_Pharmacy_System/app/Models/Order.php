@@ -12,10 +12,14 @@ class Order extends Model
     protected $fillable = [
         'user_id',
         'doctor_id',
-        'address',
+        'address_id',
+        'pharmacy_id',
+        'prescription',
         'status',
+        'created_by',
         'is_insured',
     ];
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -24,6 +28,16 @@ class Order extends Model
     public function doctor()
     {
         return $this->belongsTo(Doctor::class);
+    }
+
+    public function address()
+    {
+        return $this->belongsTo(UserAddress::class);
+    }
+
+    public function pharmacy()
+    {
+        return $this->belongsTo(Pharmacy::class);
     }
 
 }
