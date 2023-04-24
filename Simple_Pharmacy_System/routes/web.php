@@ -24,6 +24,8 @@ Route::get('/', function () {
     return view('dashboard.reports');
 });
 
+
+
 Route::prefix('dashboard')->group(function () {
     //*************pharmacy owner routes */
     Route::get('/pharmacyOwners', [PharmacyOwnerController::class, 'index'])->name('pharmacyOwners.index');
@@ -92,6 +94,8 @@ Route::prefix('dashboard')->group(function () {
     Route::get('/admin/{admin}/edit', [AdminController::class, 'edit'])->name('dashboard.admin.edit');
     Route::put('/admin/{admin}', [AdminController::class, 'update'])->name('dashboard.admin.update');
     Route::get('/admin/{admin}', [AdminController::class, 'show'])->name('dashboard.admin.show');
+    
+    //*************** report routes ****************************** 
     
     
 });
