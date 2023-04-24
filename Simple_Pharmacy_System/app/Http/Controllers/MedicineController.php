@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Drug;
+use App\Http\Requests\DrugRequest;
 use Illuminate\Http\Request;
 
 class MedicineController extends Controller
@@ -26,7 +27,7 @@ class MedicineController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(DrugRequest $request)
     {
         $data=$request->all();
         // dd($data);
@@ -39,6 +40,7 @@ class MedicineController extends Controller
                 'name' => $data['name'],
                 'quantity' => $data['quantity'],
                 'price' => $data['price'],
+                'type' => $data['type'],
                 'image'=>$file_name
 
             ]);
@@ -48,6 +50,7 @@ class MedicineController extends Controller
                 'name' => $data['name'],
                 'quantity' => $data['quantity'],
                 'price' => $data['price'],
+                'type' => $data['type'],
                 'image'=>'default.jpg'   
             ]);
         }
@@ -80,12 +83,13 @@ class MedicineController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(DrugRequest $request, string $id)
     {
         $drug=Drug::find($id);
         $drug->name = $request->name;
         $drug->price = $request->price;
         $drug->quantity = $request->quantity;
+        $drug->type = $request->type;
 
         // Handle the image upload (if there is one)
         // dd($request);
@@ -108,7 +112,9 @@ class MedicineController extends Controller
     public function destroy(string $id)
     {
         $deleted = Drug::where('id', $id)->delete();
-        return view('dashboard.medicine.index');
+        $drugs=Drug::paginate(10);
+        return view('dashboard.medicine.index',['drugs' =>$drugs]);
+        // return view('dashboard.medicine.index');
         //
     }
 }

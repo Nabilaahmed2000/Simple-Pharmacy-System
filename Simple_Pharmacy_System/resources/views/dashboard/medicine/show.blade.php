@@ -44,7 +44,7 @@
                                     <div class="col-12 col-sm-6">
                                         <h3 class="my-3">Name : {{$drug->name}}</h3>
                                         <hr>
-                                        <!-- <h4>{{$drug->type}}</h4> -->
+                                        <h4>Type : {{$drug->type}}</h4>
                                         <hr>
                                         <h4>Quantity : {{$drug->quantity}}</h4>
                                         {{-- Price --}}
@@ -52,9 +52,9 @@
                                             <h2 class="mb-0">
                                             Price : {{$drug->price}}
                                             </h2>
-                                            <h4 class="mt-0">
+                                            <!-- <h4 class="mt-0">
                                                 <small>Ex Tax: $80.00 </small>
-                                            </h4>
+                                            </h4> -->
                                         </div>
                                     </div>
                                 </div>
