@@ -21,10 +21,16 @@ class Drug extends Model
         return $this->belongsToMany(Order::class);
     }
 
-    // many to many,  @author: mariam
-    //to specify which pharmacy location has this drug
-    public function pharmacyLocations()
+
+    // Define the Accessor to convert price from cents to dollars
+    public function getPriceAttribute($value)
     {
-        return $this->belongsToMany(PharmacyLocation::class);
+        return $value / 100;
+    }
+
+    // Define the Mutator to convert price from dollars to cents
+    public function setPriceAttribute($value)
+    {
+        $this->attributes['price'] = $value * 100;
     }
 }

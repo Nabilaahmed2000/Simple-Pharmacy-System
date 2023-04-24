@@ -14,8 +14,10 @@ return new class extends Migration
     {
         Schema::create('pharmacy_locations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('area_id')->Constraint('area'); 
+            $table->foreignId('area_id')->Constraint('areas')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('doctor_id')->Constraint('doctors')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('priority');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

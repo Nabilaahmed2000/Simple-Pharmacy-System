@@ -19,10 +19,5 @@ class Area extends Model
         return $this->hasMany(PharmacyLocation::class);
     }
 
-    // is there a relationship between area and doctor?  @author: mariam
-    //not sure if this is correct
-    public function doctors()
-    {
-        return $this->hasMany(Doctor::class);
-    }
+
 }

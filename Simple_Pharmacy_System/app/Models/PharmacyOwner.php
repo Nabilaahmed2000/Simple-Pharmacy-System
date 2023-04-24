@@ -17,10 +17,8 @@ class PharmacyOwner extends Model
         'image',
     ];
 
-    // one to many relationship , @author: mariam
-    //if owner has more than one pharmacy ,please check it
-    public function pharmacyLocations()
+    public function orders()
     {
-        return $this->hasMany(PharmacyLocation::class);
+        return $this->hasMany(Order::class);
     }
 }

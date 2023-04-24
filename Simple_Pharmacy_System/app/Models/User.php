@@ -38,15 +38,9 @@ class User extends Authenticatable
         return $this->belongsToMany(Order::class);
     }
 
-    //many to many relationship. @author: mariam
-    //the user has many addresses
-    public function areas()
-    {
-        return $this->belongsToMany(Area::class);
-    }
 
-    //the user has one location in area
-    // if user has more than one location in area ,please check it
+
+
     public function area()
     {
         return $this->hasOne(Area::class);
@@ -56,9 +50,9 @@ class User extends Authenticatable
     public function drugs()
     {
         return $this->belongsToMany(Drug::class);
-    }   
+    }
 
-    
+
     /**
      * The attributes that should be hidden for serialization.
      *

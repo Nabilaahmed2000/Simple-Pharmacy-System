@@ -22,9 +22,10 @@ class Doctor extends Model
         return $this->hasMany(Order::class);
     }
 
+
     //if doctor related to specific area
-    public function pharmacyLocations()
+    public function pharmacyLocation()
     {
-        return $this->hasMany(PharmacyLocation::class);
+        return $this->belongsTo(PharmacyLocation::class);
     }
 }

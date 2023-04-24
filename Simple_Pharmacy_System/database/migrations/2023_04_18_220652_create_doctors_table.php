@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('image');
             $table->boolean('is_baned');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

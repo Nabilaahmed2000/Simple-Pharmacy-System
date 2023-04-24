@@ -12,12 +12,17 @@ class PharmacyLocation extends Model
     protected $fillable = [
         'area_id',
         'priority',
+        'doctor_id',
     ];
 
     public function area()
     {
         return $this->belongsTo(Area::class);
     }
+    public function doctors()
+    {
+        return $this->hasMany(Doctor::class);
+    }
 
-    
+
 }
