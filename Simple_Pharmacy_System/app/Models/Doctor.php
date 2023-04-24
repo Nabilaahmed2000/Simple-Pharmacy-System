@@ -30,9 +30,9 @@ class Doctor extends Authenticatable
         return $this->hasMany(Order::class);
     }
 
-    public function pharmacy()
-    {
-        return $this->belongsTo(Pharmacy::class);
-    }
+    // public function pharmacy()
+    // {
+    //     return $this->belongsTo(Pharmacy::class);
+    // }
 
 }

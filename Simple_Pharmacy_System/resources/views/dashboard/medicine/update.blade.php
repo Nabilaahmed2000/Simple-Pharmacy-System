@@ -32,7 +32,7 @@
                             <h3 class="card-title">Update Medicine</h3>
                         </div>
                         <div class="card-body">
-                            {{-- <form action="{{ route('dashboard.medicine.update' , $medicine['id']) }}" method="POST">
+                            <form action="{{ route('dashboard.medicine.update' ,1) }}" method="POST">
                                 @csrf
                                 @method('PUT')
 
@@ -67,9 +67,8 @@
                                 <div class="input-group mb-3">
                                     <button type="submit" class="btn btn-info">Update Medicine</button>
                                 </div>
-                            </form> --}}
+                            </form> 
                         </div>
-                        <!-- /.card-body -->
                     </div>
                 </div>
             </div>

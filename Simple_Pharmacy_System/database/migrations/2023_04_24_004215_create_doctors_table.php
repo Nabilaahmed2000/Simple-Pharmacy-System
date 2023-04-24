@@ -18,9 +18,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('image');
-            $table->foreignId('pharmacy_id')->constrained('pharmacies');
             $table->boolean('is_banned')->default(false);
-            $table->softDeletes();
             $table->timestamps();
         });
     }

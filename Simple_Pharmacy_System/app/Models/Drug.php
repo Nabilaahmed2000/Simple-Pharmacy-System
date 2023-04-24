@@ -12,6 +12,7 @@ class Drug extends Model
         'name',
         'quantity',
         'price',
+        'image',
     ];
 
     public function orders()

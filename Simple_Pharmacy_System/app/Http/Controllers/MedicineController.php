@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Drug;
 use Illuminate\Http\Request;
 
 class MedicineController extends Controller
@@ -12,7 +12,6 @@ class MedicineController extends Controller
     public function index()
     {
         return view('dashboard.medicine.index');
-        //
     }
 
     /**
@@ -29,6 +28,8 @@ class MedicineController extends Controller
      */
     public function store(Request $request)
     {
+        $data=$request->all();
+        
         return redirect()->route('dashboard.medicine.index');
         //
     }
@@ -38,7 +39,8 @@ class MedicineController extends Controller
      */
     public function show(string $id)
     {
-        return view('dashboard.medicine.show');
+        $drug=Drug::find($id);
+        return view('dashboard.medicine.show',['drug' =>$drug]);
         //
     }
 

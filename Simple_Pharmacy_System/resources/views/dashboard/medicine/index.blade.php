@@ -49,9 +49,9 @@
                                             <td>medical</td>
                                             <td>12.5</td>
                                             <td>
-                                                <a href="#" class="btn btn-primary">View</a>
-                                                <a href="#" class="btn btn-success">Edit</a>
-                                                <a href="#" class="btn btn-danger">Delete</a>
+                                                <a href="{{route('dashboard.medicine.show',1)}}" class="btn btn-primary">View</a>
+                                                <a href="{{route('dashboard.medicine.edit',1)}}" class="btn btn-success">Edit</a>
+                                                <a href="{{route('dashboard.medicine.destroy',1)}}" class="btn btn-danger">Delete</a>
                                             </td>
                                         </tr>
                                     </tbody>

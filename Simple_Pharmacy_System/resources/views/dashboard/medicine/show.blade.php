@@ -42,15 +42,15 @@
                                         </div>
                                     </div>
                                     <div class="col-12 col-sm-6">
-                                        <h3 class="my-3">Name</h3>
+                                        <h3 class="my-3">{{$drug->name}}</h3>
                                         <hr>
-                                        <h4>Type</h4>
+                                        <!-- <h4>{{$drug->type}}</h4> -->
                                         <hr>
-                                        <h4>Quantity</h4>
+                                        <h4>{{$drug->quantity}}</h4>
                                         {{-- Price --}}
                                         <div class="bg-gray py-2 px-3 mt-4">
                                             <h2 class="mb-0">
-                                                $80.00
+                                            {{$drug->price}}
                                             </h2>
                                             <h4 class="mt-0">
                                                 <small>Ex Tax: $80.00 </small>
