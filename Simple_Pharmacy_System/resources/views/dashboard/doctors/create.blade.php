@@ -35,10 +35,15 @@
         <form action="{{route('doctors.store')}}" method="post" enctype="multipart/form-data">
             @csrf
       <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Name" name="name">
+            <input type="text" class="form-control @error('name') is-invalid @enderror"  placeholder="Name" name="name"  >
             <div class="input-group-append">
               <span class="input-group-text"><i class="fas fa-check"></i></span>
             </div>
+          </div>
+          <div>
+              @error('name')
+              <small class="text-danger my-2">{{ $message }}</small>
+              @enderror
           </div>
 
 
@@ -50,7 +55,14 @@
       </div>
 
       <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="National Id" name="nationalId">
+            <input type="password" class="form-control" placeholder="password" name="password">
+                <div class="input-group-append">
+                    <span class="input-group-text"><i class="fas fa-check"></i></span>
+                </div>
+      </div>
+
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="National Id" name="national_id">
         <div class="input-group-append">
           <span class="input-group-text"><i class="fas fa-check"></i></span>
         </div>
@@ -64,11 +76,13 @@
       </div>
 
       <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="password" name="password">
-        <div class="input-group-append">
-          <span class="input-group-text"><i class="fas fa-check"></i></span>
-        </div>
-      </div>
+          <select class="form-control" name="pharmacy_id">
+
+              @foreach ($pharmacies as $pharmacy)
+                  <option value="{{$pharmacy->id}}">{{ $pharmacy->name }}</option>
+              @endforeach
+          </select>
+     </div>
       <div class="input-group mb-3">
         <button type="submit" class="btn btn-info">Add Doctor</button>
       </div>
