@@ -3,8 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Dashboard</title>
+  <title>Pharmacy| Dashboard</title>
 
+<!-- Google Font: Source Sans Pro -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome cdn version 6.4.0 -->
@@ -25,6 +27,12 @@
   <link rel="stylesheet" href="{{ asset ('adminAssets/plugins/daterangepicker/daterangepicker.css')}}">
   <!-- summernote -->
   <link rel="stylesheet" href="{{ asset ('adminAssets/plugins/summernote/summernote-bs4.min.css')}}">
+<!-- DataTables -->
+<link rel="stylesheet" href="{{ asset ('adminAssets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
+<link rel="stylesheet" href="{{ asset ('adminAssets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
+<link rel="stylesheet" href="{{ asset ('adminAssets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
+<!-- Theme style -->
+<link rel="stylesheet" href="{{ asset ('adminAssets/css/adminlte.min.css')}}">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -82,5 +90,41 @@
 <script src="{{ asset ('adminAssets/js/demo.js')}}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{ asset ('adminAssets/js/pages/dashboard.js')}}"></script>
+
+<!-- DataTables  & Plugins -->
+<script src="{{ asset ('adminAssets/plugins/datatables/jquery.dataTables.min.js')}}"></script>
+<script src="{{ asset ('adminAssets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
+<script src="{{ asset ('adminAssets/plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
+<script src="{{ asset ('adminAssets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
+<script src="{{ asset ('adminAssets/plugins/datatables-buttons/js/dataTables.buttons.min.js')}}"></script>
+<script src="{{ asset ('adminAssets/plugins/datatables-buttons/js/buttons.bootstrap4.min.js')}}"></script>
+<script src="{{ asset ('adminAssets/plugins/jszip/jszip.min.js')}}"></script>
+<script src="{{ asset ('adminAssets/plugins/pdfmake/pdfmake.min.js')}}"></script>
+<script src="{{ asset ('adminAssets/plugins/pdfmake/vfs_fonts.js')}}"></script>
+<script src="{{ asset ('adminAssets/plugins/datatables-buttons/js/buttons.html5.min.js')}}"></script>
+<script src="{{ asset ('adminAssets/plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
+<script src="{{ asset ('adminAssets/plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
+<!-- AdminLTE App -->
+<script src="{{ asset ('adminAssets/js/adminlte.min.js')}}"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="{{ asset ('adminAssets/js/demo.js')}}"></script>
+<!-- Page specific script -->
+<script>
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>
 </body>
 </html>

@@ -29,6 +29,7 @@ class MedicineController extends Controller
      */
     public function store(Request $request)
     {
+        return redirect()->route('dashboard.medicine.index');
         //
     }
 
@@ -37,6 +38,7 @@ class MedicineController extends Controller
      */
     public function show(string $id)
     {
+        return view('dashboard.medicine.show');
         //
     }
 
@@ -45,6 +47,7 @@ class MedicineController extends Controller
      */
     public function edit(string $id)
     {
+        return view('dashboard.medicine.update');
         //
     }
 
@@ -54,6 +57,7 @@ class MedicineController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        return redirect()->route('dashboard.medicine.index');
     }
 
     /**
@@ -61,6 +65,7 @@ class MedicineController extends Controller
      */
     public function destroy(string $id)
     {
+        return view('dashboard.medicine.index');
         //
     }
 }
