@@ -50,9 +50,19 @@
                                             <td>medical</td>
                                             <td>{{$drug['price']}}</td>
                                             <td>
+<<<<<<< HEAD
                                                 <a href="{{route('dashboard.medicine.show',$drug['id'])}}" class="btn btn-primary">View</a>
                                                 <a href="{{route('dashboard.medicine.edit',$drug['id'])}}" class="btn btn-success">Edit</a>
                                                 <a href="{{route('dashboard.medicine.destroy',$drug['id'])}}" class="btn btn-danger">Delete</a>
+=======
+                                                <a href="{{route('medicine.show',1 )}}" class="btn btn-primary">View</a>
+                                                <a href="{{route('medicine.edit',1 )}}" class="btn btn-success">Edit</a>
+                                                <form action="{{ route('medicine.destroy', 4) }}" method="POST" class="d-inline">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                                </form>
+>>>>>>> 39bf5f0004de4d2382b135b2cf2a87118574da6d
                                             </td>
                                         </tr>
                                     @endforeach

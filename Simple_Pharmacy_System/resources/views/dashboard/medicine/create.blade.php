@@ -32,7 +32,7 @@
                             <h3 class="card-title">Add Medicine</h3>
                         </div>
                         <div class="card-body">
-                            <form action="{{ route('dashboard.medicine.store') }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('medicine.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 @method('POST')
 

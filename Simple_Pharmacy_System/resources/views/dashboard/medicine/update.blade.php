@@ -42,7 +42,12 @@
                             <h3 class="card-title">Update Medicine</h3>
                         </div>
                         <div class="card-body">
+<<<<<<< HEAD
                             <form action="{{ route('dashboard.medicine.update' ,$id) }}" method="POST" enctype="multipart/form-data">
+=======
+                            {{--  $medicine['id'] --}}
+                            <form action="{{ route('medicine.update' ,1) }}" method="POST">
+>>>>>>> 39bf5f0004de4d2382b135b2cf2a87118574da6d
                                 @csrf
                                 @method('PUT')
 
@@ -83,7 +88,11 @@
                                 <div class="input-group mb-3">
                                     <button type="submit" class="btn btn-info">Update Medicine</button>
                                 </div>
+<<<<<<< HEAD
                             </form> 
+=======
+                            </form>
+>>>>>>> 39bf5f0004de4d2382b135b2cf2a87118574da6d
                         </div>
                     </div>
                 </div>

@@ -32,7 +32,8 @@
                                 <h3 class="card-title">Update Pharmacy</h3>
                             </div>
                             <div class="card-body">
-                                <form action="{{ route('dashboard.pharmacy.update', $pharmacy['id']) }}" method="POST">
+                                {{-- $pharmacy['id'] --}}
+                                <form action="{{ route('pharmacy.update',1 ) }}" method="POST">
                                     @csrf
                                     @method('PUT')
                                     <div class="input-group mb-3">

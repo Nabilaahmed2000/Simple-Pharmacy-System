@@ -52,7 +52,7 @@ class MedicineController extends Controller
             ]);
         }
 
-        return redirect()->route('dashboard.medicine.index');
+        return redirect()->route('medicine.index');
         //
     }
 
@@ -97,7 +97,9 @@ class MedicineController extends Controller
         }
         // Save the updated drug to the database
         $drug->save();
-        return redirect()->route('dashboard.medicine.index');
+        // return redirect()->route('dashboard.medicine.index');
+        //
+        return redirect()->route('medicine.index');
     }
 
     /**

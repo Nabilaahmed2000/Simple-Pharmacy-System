@@ -38,22 +38,32 @@ class PermissionSeeder extends Seeder
 
 //        Area::create([
 //            'name' => 'Test Area',
-//            'country_id' => 4,
+//            'country_id' =>10,
 //        ]);
 //
 //        Pharmacy::create([
 //            'name' => 'Test Pharmacy',
-//            'area_id' => 4,
-//            'priority' => 1,
+//            'area_id' => 2,
+//            'priority' =>2,
 //        ]);
 
-
-       Doctor::create([
-            'name' => 'nabila Doctor',
-            'email' => 'nabila@gmail.com',
-            'national_id' => '923456789',
+//
+//       Doctor::create([
+//            'name' => 'nabila Doctor',
+//            'email' => 'nabila@gmail.com',
+//            'national_id' => '923456789',
+//            'password' => '123456789',
+//            'pharmacy_id' =>2,
+//            'image' => '1.jpg',
+//
+//
+//        ])->assignRole('owner');
+        Doctor::create([
+            'name' => 'mariam Doctor',
+            'email' => 'mariam.com',
+            'national_id' => '823456789',
             'password' => '123456789',
-            'pharmacy_id' =>8,
+            'pharmacy_id' =>5,
             'image' => '1.jpg',
 
 

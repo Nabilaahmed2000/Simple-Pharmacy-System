@@ -30,6 +30,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        return redirect()->route('users.index');
         //
     }
 
@@ -54,20 +55,8 @@ class UserController extends Controller
      */
     public function update(UserUpdateRequest $request, User $user)
     {
-        $user->fill($request->except('password', 'image'));
-        if($request->has('password')){
-            $user->password = bcrypt($request->password);
-        }
-        if($request->has('image')){
-            $name = $request->image->getClientOriginalName();
-            $request->image->move(public_path('images'), $name);
-            if($user->image && file_exists(public_path('images/' . $user->image))){
-                unlink(public_path('images/' . $user->image));
-            }
-            $user->image = $name;
-        }
-        $user->save();
-
+        return redirect()->route('users.index');
+        //
     }
 
     /**
@@ -75,6 +64,8 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
+        // return view('dashboard.users');
+        return redirect()->route('users.index');
         //
     }
 }
