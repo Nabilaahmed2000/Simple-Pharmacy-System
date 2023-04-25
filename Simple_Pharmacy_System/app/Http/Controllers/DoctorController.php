@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\DoctorStoreRequest;
+use App\Http\Requests\DoctorUpdateRequest;
 use App\Models\Doctor;
 use App\Models\Pharmacy;
 use Illuminate\Http\Request;
@@ -33,23 +34,24 @@ class DoctorController extends Controller
     public function store(DoctorStoreRequest $request)
     {
 
-return  $request;
+
         if ($request->hasFile('image')) {
             $image_extension = $request->image->getClientOriginalExtension() ;
-            $filename = time().'.'.$image_extension;
+            $image = time().'.'.$image_extension;
             $path = 'images/doctors';
-            $request->image->move($path,$filename);
+            $request->image->move($path,$image);
 
 
         }
         $data=$request->all();
         Doctor::create([
+
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => $data['password'],
             'national_id' => $data['national_id'],
             'pharmacy_id' => $data['pharmacy_id'],
-            'image'=>$filename
+            'image'=>$image
 
         ])->assignRole('doctor');
        return redirect()->route('doctors.index');
@@ -58,32 +60,52 @@ return  $request;
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Doctor $doctor)
     {
-        return view('dashboard.doctors.show');
+        return view('dashboard.doctors.show' , compact('doctor'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Doctor $doctor)
     {
-        return view('dashboard.doctors.update');
+        $pharmacies =Pharmacy::all();
+        return view('dashboard.doctors.update' , compact('doctor','pharmacies'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(DoctorUpdateRequest $request, Doctor $doctor)
     {
+
+        $doctor->update($request->except('image'));
+            if ($request->hasFile('image')  ) {
+                $old_image = $doctor->image;
+                $image = $request->image;
+                $image_new_name = time() .'.'. $image->getClientOriginalExtension();
+                $image->move('images/doctors', $image_new_name);
+                if ($old_image) {
+                    unlink("images/doctors/".$old_image);
+                }
+                $doctor->image = $image_new_name;
+            }
+
+        $doctor->save();
         return redirect()->route('doctors.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Doctor $doctor)
     {
-
+        if($doctor->image){
+            $file_path = "images/doctors/".$doctor->image;
+            unlink($file_path);
+        }
+        $doctor->delete();
+        return redirect()->route('doctors.index');
     }
 }

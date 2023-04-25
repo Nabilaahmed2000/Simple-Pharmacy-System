@@ -39,7 +39,6 @@
                     <tr>
                         <th>Name</th>
                         <th>Email</th>
-                        <th>Image</th>
                         <th>National Id</th>
                         <th>Pharmacy</th>
                         <th>Is Banned</th>
@@ -52,17 +51,16 @@
                         <tr>
                         <td>{{$doctor->name}}</td>
                         <td>{{$doctor->email}}</td>
-                        <td><img src="#" /></td>
                          <td>{{$doctor->national_id}}</td>
                         <td>{{$doctor->pharmacy->name}}</td>
-                        <td> {{$doctor->is_baned}}</td>
+                        <td> @if($doctor->is_banned == 0)False @else True  @endif</td>
                         <td>
                             <a href="{{ route('doctors.show', $doctor['id']) }}" class="btn btn-primary">View</a>
                             <a href="{{ route('doctors.edit', $doctor['id']) }}" class="btn btn-success">Edit</a>
                             <form method="POST" action="{{ route('doctors.destroy', $doctor['id']) }}" class="d-inline">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn  btn-danger "
+                                <button type="submit" class="btn  btn-danger " onClick="return confirm('Are you sure??')"
                                         title='Delete'>Delete</button>
                             </form>
 
