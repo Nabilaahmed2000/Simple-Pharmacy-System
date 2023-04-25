@@ -98,41 +98,9 @@ class MedicineController extends Controller
             $drug->image = $image_new_name;
         }
 
-    $drug->save();
-    return redirect()->route('medicine.index');
+            $drug->save();
+            return redirect()->route('medicine.index');
     }
-    // public function update(DrugRequest $request, string $id)
-    // {
-    //     $drug = Drug::find($id);
-    //     $drug->name = $request->name;
-    //     $drug->price = $request->price;
-    //     $drug->quantity = $request->quantity;
-    //     $drug->type = $request->type;
-    //     dd($request);
-    
-    //     // Handle the image upload (if there is one)
-    //     if ($request->hasFile('image')) {
-    //         $old_image = $drug->image;
-    //         $image = $request->file('image');
-    //         $image_new_name = time() . '.' . $image->getClientOriginalExtension();
-    //         dd($image_new_name,$old_image);
-    //         if ($image->move('images/drugs', $image_new_name)) {
-    //             // Delete the old image
-    //             unlink('images/drugs/' . $old_image);
-    //             // Update the drug with the new image name
-    //             $drug->image = $image_new_name;
-                
-    //         } else {
-    //             // Handle the file upload error
-    //             return back()->with('error', 'Failed to upload image.');
-    //         }
-    //     }
-    
-    //     // Save the updated drug to the database
-    //     $drug->save();
-    //     // dd($drug);
-    //     return redirect()->route('medicine.index');
-    // }
     /**
      * Remove the specified resource from storage.
      */
