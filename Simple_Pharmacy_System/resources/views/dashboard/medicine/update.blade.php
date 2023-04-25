@@ -3,7 +3,7 @@
 
 <!-- yeild body -->
 @foreach ($drugs as $drug)
-@php    
+@php
         $id=$drug->id ;
         $name=$drug->name;
         $quantity=$drug->quantity;
@@ -42,12 +42,7 @@
                             <h3 class="card-title">Update Medicine</h3>
                         </div>
                         <div class="card-body">
-<<<<<<< HEAD
                             <form action="{{ route('dashboard.medicine.update' ,$id) }}" method="POST" enctype="multipart/form-data">
-=======
-                            {{--  $medicine['id'] --}}
-                            <form action="{{ route('medicine.update' ,1) }}" method="POST">
->>>>>>> 39bf5f0004de4d2382b135b2cf2a87118574da6d
                                 @csrf
                                 @method('PUT')
 
@@ -89,7 +84,7 @@
                                     <button type="submit" class="btn btn-info">Update Medicine</button>
                                 </div>
 <<<<<<< HEAD
-                            </form> 
+                            </form>
 =======
                             </form>
 >>>>>>> 39bf5f0004de4d2382b135b2cf2a87118574da6d

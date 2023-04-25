@@ -32,10 +32,11 @@
       <h3 class="card-title">Edit Pharmacy Owner</h3>
     </div>
     <div class="card-body">
-        <form action="{{route('pharmacyOwners.store')}}" method="post" enctype="multipart/form-data">
+        <form action="{{route('pharmacyOwners.update',$doctor->id)}}" method="POST" enctype="multipart/form-data">
             @csrf
+            @method('PUT')
       <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Name" name="name">
+            <input type="text" class="form-control" placeholder="Name" name="name" value="{{$doctor->name}}">
             <div class="input-group-append">
               <span class="input-group-text"><i class="fas fa-check"></i></span>
             </div>
@@ -46,18 +47,18 @@
         <div class="input-group-prepend">
           <span class="input-group-text"><i class="fas fa-envelope"></i></span>
         </div>
-        <input type="email" class="form-control" placeholder="Email" name="email">
+        <input type="email" class="form-control" placeholder="Email" name="email" value="{{$doctor->email}}">
       </div>
 
       <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="National Id" name="nationalId">
+        <input type="text" class="form-control" placeholder="National Id" name="nationalId" value="{{$doctor->national_id}}">
         <div class="input-group-append">
           <span class="input-group-text"><i class="fas fa-check"></i></span>
         </div>
       </div>
 
       <div class="input-group mb-3">
-        <input type="file" class="form-control" placeholder="Image" name="image">
+        <input type="file" class="form-control" placeholder="Image" name="image" value="{{$doctor->image}}">
         <div class="input-group-append">
           <span class="input-group-text"><i class="fas fa-check"></i></span>
         </div>
@@ -69,6 +70,14 @@
           <span class="input-group-text"><i class="fas fa-check"></i></span>
         </div>
       </div>
+      <div class="input-group mb-3">
+        <select class="form-control" name="pharmacy_id">
+
+            @foreach ($pharmacies as $pharmacy)
+                <option value="{{$pharmacy->id}}">{{ $pharmacy->name }}</option>
+            @endforeach
+        </select>
+   </div>
       <div class="input-group mb-3">
         <button type="submit" class="btn btn-info">Update Pharmacy Owner</button>
       </div>

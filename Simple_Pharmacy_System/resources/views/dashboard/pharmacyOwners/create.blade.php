@@ -32,7 +32,7 @@
       <h3 class="card-title">Add Pharmacy Owner</h3>
     </div>
     <div class="card-body">
-        <form action="{{route('pharmacyOwners.store')}}" method="post" enctype="multipart/form-data">
+   <form  action="{{ route('pharmacyOwners.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
       <div class="input-group mb-3">
             <input type="text" class="form-control" placeholder="Name" name="name">
@@ -50,7 +50,7 @@
       </div>
 
       <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="National Id" name="nationalId">
+        <input type="text" class="form-control" placeholder="National Id" name="national_id">
         <div class="input-group-append">
           <span class="input-group-text"><i class="fas fa-check"></i></span>
         </div>
@@ -69,6 +69,14 @@
           <span class="input-group-text"><i class="fas fa-check"></i></span>
         </div>
       </div>
+      <div class="input-group mb-3">
+        <select class="form-control" name="pharmacy_id">
+
+            @foreach ($pharmacies as $pharmacy)
+                <option value="{{$pharmacy->id}}">{{ $pharmacy->name }}</option>
+            @endforeach
+        </select>
+   </div>
       <div class="input-group mb-3">
         <button type="submit" class="btn btn-info">Add Pharmacy Owner</button>
       </div>

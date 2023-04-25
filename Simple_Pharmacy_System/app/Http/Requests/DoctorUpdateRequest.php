@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class DoctorUpdateRequest extends FormRequest
 {
@@ -23,9 +24,9 @@ class DoctorUpdateRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'national_id' => 'required|string|max:255,'. $this->doctor->id,
-            'email' => 'required|string|email|max:255|unique:doctors,email,' . $this->doctor->id,
-            'password' => 'nullable|string|min:8|confirmed',
+            'national_id' => ['required','string','max:255',Rule::unique('doctors', 'national_id')->ignore($this->national_id,'national_id')],
+            'email' => ['required','string','email','max:255',Rule::unique('doctors', 'email')->ignore($this->email,'email')],
+            'password' => 'nullable|string|min:8',
             'image' => 'nullable|image|mimes:jpg,png|max:2048',
             'pharmacy_id' => 'required|exists:pharmacies,id',
         ];

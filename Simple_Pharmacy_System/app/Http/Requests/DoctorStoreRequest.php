@@ -25,9 +25,10 @@ class DoctorStoreRequest extends FormRequest
             'name' => 'required|string|max:255',
             'national_id' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:doctors',
-            'password' => 'required|string|min:8|confirmed',
+            'password' => 'required|string|min:8',
             'image' => 'required|image|mimes:jpg,png|max:2048',
             'pharmacy_id' => 'required|exists:pharmacies,id',
         ];
     }
+
 }
