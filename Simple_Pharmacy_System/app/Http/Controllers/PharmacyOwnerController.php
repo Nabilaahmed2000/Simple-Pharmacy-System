@@ -83,23 +83,19 @@ class PharmacyOwnerController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(DoctorUpdateRequest $request, string $id)
-    {
-        dd("kkkkkk");
-        $doctor = Doctor::find($id);
-        dd($doctor);
-        if ($doctor) {
-            $doctor->update($request->except('image'));
-            if ($request->hasFile('image')) {
+    public function update(DoctorUpdateRequest $request,string $id)
+    {   $doctor=Doctor::find($id);
+        $doctor->update($request->except('image'));
+            if ($request->hasFile('image')  ) {
                 $old_image = $doctor->image;
                 $image = $request->image;
-                $image_new_name = time() . '.' . $image->getClientOriginalExtension();
-                if ($image->move('images/pharmacyOwners', $image_new_name)) {
-                    unlink('images/pharmacyOwners/' . $old_image);
+                $image_new_name = time() .'.'. $image->getClientOriginalExtension();
+                $image->move('images/pharmacyOwners', $image_new_name);
+                if ($old_image) {
+                    unlink("images/pharmacyOwners/".$old_image);
                 }
                 $doctor->image = $image_new_name;
             }
-        }
 
         $doctor->save();
         return redirect()->route('pharmacyOwners.index');
