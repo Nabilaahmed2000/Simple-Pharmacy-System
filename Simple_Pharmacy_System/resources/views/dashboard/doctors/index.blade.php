@@ -35,29 +35,40 @@
                 <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">
                     <thead>
+
                     <tr>
                         <th>Name</th>
                         <th>Email</th>
                         <th>Image</th>
                         <th>National Id</th>
+                        <th>Pharmacy</th>
                         <th>Is Banned</th>
                         <th>Actions</th>
                     </tr>
+
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>Mariam</td>
-                        <td>mariam@gmail.com</td>
+                    @foreach($doctors as $doctor)
+                        <tr>
+                        <td>{{$doctor->name}}</td>
+                        <td>{{$doctor->email}}</td>
                         <td><img src="#" /></td>
-                        <td> 44444444444444444444</td>
-                        <td> banned</td>
+                         <td>{{$doctor->national_id}}</td>
+                        <td>{{$doctor->pharmacy->name}}</td>
+                        <td> {{$doctor->is_baned}}</td>
                         <td>
-                            <a href="#" class="btn btn-primary">View</a>
-                            <a href="#" class="btn btn-success">Edit</a>
-                            <a href="#" class="btn btn-danger">Delete</a>
+                            <a href="{{ route('doctors.show', $doctor['id']) }}" class="btn btn-primary">View</a>
+                            <a href="{{ route('doctors.edit', $doctor['id']) }}" class="btn btn-success">Edit</a>
+                            <form method="POST" action="{{ route('doctors.destroy', $doctor['id']) }}" class="d-inline">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn  btn-danger "
+                                        title='Delete'>Delete</button>
+                            </form>
 
                       </td>
                     </tr>
+<<<<<<< HEAD
 
                     <tr>
                         <td>Habiba</td>
@@ -74,6 +85,9 @@
                     </tr>
 
 
+=======
+                    @endforeach
+>>>>>>> 51ececdcaef89438ea9e01614a98f125b4cbf7e1
                     </tbody>
                     </table>
                 </div>

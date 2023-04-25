@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Drug;
+use App\Http\Requests\DrugRequest;
 use Illuminate\Http\Request;
 
 class MedicineController extends Controller
@@ -26,7 +27,7 @@ class MedicineController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(DrugRequest $request)
     {
         $data=$request->all();
         // dd($data);
@@ -82,7 +83,7 @@ class MedicineController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(DrugRequest $request, string $id)
     {
         $drug=Drug::find($id);
         $drug->name = $request->name;

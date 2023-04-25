@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\DoctorStoreRequest;
 use App\Models\Doctor;
+use App\Models\Pharmacy;
 use Illuminate\Http\Request;
 
 class DoctorController extends Controller
@@ -12,8 +14,8 @@ class DoctorController extends Controller
      */
     public function index()
     {
-        return  Doctor::role('doctor')->get();
-        return view('dashboard.doctors.index');
+        $doctors=  Doctor::role('doctor')->get();
+        return view('dashboard.doctors.index',compact('doctors'));
     }
 
     /**
@@ -21,24 +23,35 @@ class DoctorController extends Controller
      */
     public function create()
     {
-        return view('dashboard.doctors.create');
+        $pharmacies =Pharmacy::all();
+        return view('dashboard.doctors.create', compact('pharmacies'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(DoctorStoreRequest $request)
     {
-//        $doctor=Doctor::create([
-//            'name' => 'Test Doctor',
-//            'email' => 'somaya@gmail.com',
-//            'national_id' => '123456789',
-//            'password' => '123456789',
-//            'image' => 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.com%2Fpremium-vecto',
-//
-//
-//        ]);
-//        return $doctor;
+
+return  $request;
+        if ($request->hasFile('image')) {
+            $image_extension = $request->image->getClientOriginalExtension() ;
+            $filename = time().'.'.$image_extension;
+            $path = 'images/doctors';
+            $request->image->move($path,$filename);
+
+
+        }
+        $data=$request->all();
+        Doctor::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => $data['password'],
+            'national_id' => $data['national_id'],
+            'pharmacy_id' => $data['pharmacy_id'],
+            'image'=>$filename
+
+        ])->assignRole('doctor');
        return redirect()->route('doctors.index');
     }
 
@@ -71,6 +84,6 @@ class DoctorController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+
     }
 }

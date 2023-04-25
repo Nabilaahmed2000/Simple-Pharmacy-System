@@ -31,6 +31,7 @@ class PharmacyController extends Controller
     public function store(Request $request)
     {
 
+
         $pharmacy = Pharmacy::create($request->all());
 
     }
