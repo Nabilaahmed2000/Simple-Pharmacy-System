@@ -58,6 +58,22 @@
 
                       </td>
                     </tr>
+
+                    <tr>
+                        <td>Habiba</td>
+                        <td>habiba@gmail.com</td>
+                        <td><img src="#" /></td>
+                        <td> 222222222222</td>
+                        <td> banned</td>
+                        <td>
+                            <a href="#" class="btn btn-primary">View</a>
+                            <a href="#" class="btn btn-success">Edit</a>
+                            <a href="#" class="btn btn-danger">Delete</a>
+
+                      </td>
+                    </tr>
+
+
                     </tbody>
                     </table>
                 </div>

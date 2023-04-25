@@ -44,18 +44,23 @@
                     </tr>
                     </thead>
                     <tbody>
+                        @foreach($pharmacyOwners as $pharmacyOwner)
                     <tr>
-                        <td>Mariam</td>
-                        <td>mariam@gmail.com</td>
+                        <td>{{$pharmacyOwner['name']}}</td>
+                        <td>{{$pharmacyOwner['email']}}</td>
                         <td><img src="#" /></td>
-                        <td> 44444444444444444444</td>
+                        <td> {{$pharmacyOwner['national_id']}}</td>
                         <td>
-                            <a href="#" class="btn btn-primary">View</a>
-                            <a href="#" class="btn btn-success">Edit</a>
-                            <a href="#" class="btn btn-danger">Delete</a>
+                            <a href="{{route('pharmacyOwners.show',$pharmacyOwner['id'])}}" class="btn btn-primary">View</a>
+                            <a href="{{route('pharmacyOwners.edit',$pharmacyOwner['id'])}}" class="btn btn-success">Edit</a>
+                            <form method="POST" action="{{route('pharmacyOwners.destroy',$pharmacyOwner->id)}}"  style="display:inline">
+                                {{ csrf_field() }} {{ method_field('DELETE') }}
+                                <button type="submit" id='delete' class="btn btn-danger" onClick="return confirm('are you sure??')">Delete</button>
+                            </form>
 
-                      </td>
+                        </td>
                     </tr>
+                    @endforeach
                     </tbody>
                     </table>
                 </div>

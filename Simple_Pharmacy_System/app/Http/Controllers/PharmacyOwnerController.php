@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Doctor;
 
 class PharmacyOwnerController extends Controller
 {
@@ -11,7 +12,10 @@ class PharmacyOwnerController extends Controller
      */
     public function index()
     {
-        return view('dashboard.pharmacyOwners.index');
+        $pharmacyOwners = Doctor::role('owner')->get();
+        return view('dashboard.pharmacyOwners.index',[
+            'pharmacyOwners' =>$pharmacyOwners
+        ]);
     }
 
     /**
