@@ -68,26 +68,7 @@
 
                       </td>
                     </tr>
-<<<<<<< HEAD
-
-                    <tr>
-                        <td>Habiba</td>
-                        <td>habiba@gmail.com</td>
-                        <td><img src="#" /></td>
-                        <td> 222222222222</td>
-                        <td> banned</td>
-                        <td>
-                            <a href="#" class="btn btn-primary">View</a>
-                            <a href="#" class="btn btn-success">Edit</a>
-                            <a href="#" class="btn btn-danger">Delete</a>
-
-                      </td>
-                    </tr>
-
-
-=======
                     @endforeach
->>>>>>> 51ececdcaef89438ea9e01614a98f125b4cbf7e1
                     </tbody>
                     </table>
                 </div>

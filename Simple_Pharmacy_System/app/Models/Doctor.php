@@ -8,11 +8,7 @@ use Spatie\Permission\Traits\HasRoles;
 
 class Doctor extends Authenticatable
 {
-<<<<<<< HEAD
-    use HasFactory,HasRoles;
-=======
     use HasFactory , HasRoles;
->>>>>>> 51ececdcaef89438ea9e01614a98f125b4cbf7e1
     protected $fillable = [
         'national_id',
         'name',
