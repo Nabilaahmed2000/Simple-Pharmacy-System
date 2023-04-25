@@ -40,6 +40,7 @@
                         <th>Email</th>
                         <th>Image</th>
                         <th>National Id</th>
+                        <th>Is Banned</th>
                         <th>Actions</th>
                     </tr>
                     </thead>
@@ -48,8 +49,9 @@
                     <tr>
                         <td>{{$pharmacyOwner['name']}}</td>
                         <td>{{$pharmacyOwner['email']}}</td>
-                        <td><img src="#" /></td>
+                        <td><img style="width: 70px;height:auto" src="{{asset ('images/pharmacyOwners/'.$pharmacyOwner->image) }}" alt="User image"></td>
                         <td> {{$pharmacyOwner['national_id']}}</td>
+                        <td> @if($pharmacyOwner->is_banned == 0)False @else True  @endif</td>
                         <td>
                             <a href="{{route('pharmacyOwners.show',$pharmacyOwner['id'])}}" class="btn btn-primary">View</a>
                             <a href="{{route('pharmacyOwners.edit',$pharmacyOwner['id'])}}" class="btn btn-success">Edit</a>
