@@ -3,7 +3,7 @@
 
 <!-- yeild body -->
 @foreach ($drugs as $drug)
-@php    
+@php
         $id=$drug->id ;
         $name=$drug->name;
         $quantity=$drug->quantity;
@@ -52,8 +52,7 @@
                             <h3 class="card-title">Update Medicine</h3>
                         </div>
                         <div class="card-body">
-                            {{--  $medicine['id'] --}}
-                            <form action="{{ route('medicine.update' ,$id) }}" method="POST">
+                            <form action="{{ route('medicine.update' ,$id) }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
 
@@ -73,7 +72,7 @@
 
                                 <div class="input-group mb-3">
                                     <input type="text" class="form-control" placeholder="Type"
-                                        name="type" value="medical">
+                                        name="type" value="{{type}}">
                                     <div class="input-group-append">
                                         <span class="input-group-text"><i class="fas fa-check"></i></span>
                                     </div>

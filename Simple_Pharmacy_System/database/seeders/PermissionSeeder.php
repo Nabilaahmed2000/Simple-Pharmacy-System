@@ -58,16 +58,16 @@ class PermissionSeeder extends Seeder
 //
 //
 //        ])->assignRole('owner');
-        Doctor::create([
-            'name' => 'mariam Doctor',
-            'email' => 'mariam.com',
-            'national_id' => '823456789',
-            'password' => '123456789',
-            'pharmacy_id' =>5,
-            'image' => '1.jpg',
-
-
-        ])->assignRole('doctor');
+//        Doctor::create([
+//            'name' => 'mariam Doctor',
+//            'email' => 'mariam.com',
+//            'national_id' => '823456789',
+//            'password' => '123456789',
+//            'pharmacy_id' =>5,
+//            'image' => '1.jpg',
+//
+//
+//        ])->assignRole('doctor');
 //        $doctor = Doctor::find(5);
 ////
 //        $doctor->assignRole('owner');

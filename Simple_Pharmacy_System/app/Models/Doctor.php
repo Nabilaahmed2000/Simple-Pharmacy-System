@@ -8,7 +8,7 @@ use Spatie\Permission\Traits\HasRoles;
 
 class Doctor extends Authenticatable
 {
-    use HasFactory;
+    use HasFactory , HasRoles;
     protected $fillable = [
         'national_id',
         'name',
@@ -36,9 +36,9 @@ class Doctor extends Authenticatable
         return $this->hasMany(Order::class);
     }
 
-    // public function pharmacy()
-    // {
-    //     return $this->belongsTo(Pharmacy::class);
-    // }
+     public function pharmacy()
+     {
+         return $this->belongsTo(Pharmacy::class);
+     }
 
 }

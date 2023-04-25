@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\DoctorStoreRequest;
+use App\Http\Requests\DoctorUpdateRequest;
 use App\Models\Doctor;
+use App\Models\Pharmacy;
 use Illuminate\Http\Request;
 
 class DoctorController extends Controller
@@ -12,8 +15,8 @@ class DoctorController extends Controller
      */
     public function index()
     {
-        return  Doctor::role('doctor')->get();
-        return view('dashboard.doctors.index');
+        $doctors=  Doctor::role('doctor')->get();
+        return view('dashboard.doctors.index',compact('doctors'));
     }
 
     /**
@@ -21,56 +24,88 @@ class DoctorController extends Controller
      */
     public function create()
     {
-        return view('dashboard.doctors.create');
+        $pharmacies =Pharmacy::all();
+        return view('dashboard.doctors.create', compact('pharmacies'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(DoctorStoreRequest $request)
     {
-//        $doctor=Doctor::create([
-//            'name' => 'Test Doctor',
-//            'email' => 'somaya@gmail.com',
-//            'national_id' => '123456789',
-//            'password' => '123456789',
-//            'image' => 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.com%2Fpremium-vecto',
-//
-//
-//        ]);
-//        return $doctor;
+
+
+        if ($request->hasFile('image')) {
+            $image_extension = $request->image->getClientOriginalExtension() ;
+            $image = time().'.'.$image_extension;
+            $path = 'images/doctors';
+            $request->image->move($path,$image);
+
+
+        }
+        $data=$request->all();
+        Doctor::create([
+
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => $data['password'],
+            'national_id' => $data['national_id'],
+            'pharmacy_id' => $data['pharmacy_id'],
+            'image'=>$image
+
+        ])->assignRole('doctor');
        return redirect()->route('doctors.index');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Doctor $doctor)
     {
-        return view('dashboard.doctors.show');
+        return view('dashboard.doctors.show' , compact('doctor'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Doctor $doctor)
     {
-        return view('dashboard.doctors.update');
+        $pharmacies =Pharmacy::all();
+        return view('dashboard.doctors.update' , compact('doctor','pharmacies'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(DoctorUpdateRequest $request, Doctor $doctor)
     {
+
+        $doctor->update($request->except('image'));
+            if ($request->hasFile('image')  ) {
+                $old_image = $doctor->image;
+                $image = $request->image;
+                $image_new_name = time() .'.'. $image->getClientOriginalExtension();
+                $image->move('images/doctors', $image_new_name);
+                if ($old_image) {
+                    unlink("images/doctors/".$old_image);
+                }
+                $doctor->image = $image_new_name;
+            }
+
+        $doctor->save();
         return redirect()->route('doctors.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Doctor $doctor)
     {
-        //
+        if($doctor->image){
+            $file_path = "images/doctors/".$doctor->image;
+            unlink($file_path);
+        }
+        $doctor->delete();
+        return redirect()->route('doctors.index');
     }
 }
