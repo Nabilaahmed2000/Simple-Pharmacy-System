@@ -23,6 +23,11 @@ class DrugRequest extends FormRequest
     {
         return [
             //
+            'name' => 'required|string|max:255|min:3',
+            'quantity' => 'required|integer',
+            'price' => 'required|integer',
+            'type' => 'required|string|max:255|min:3',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
     }
 }
