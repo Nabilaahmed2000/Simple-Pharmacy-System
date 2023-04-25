@@ -3,6 +3,7 @@
 
 <!-- yeild body -->
 @section('body')
+
 <div class="content-wrapper">
     <!-- /.content-header -->
     <section class="content-header">
@@ -31,6 +32,15 @@
                         <div class="card-header">
                             <h3 class="card-title">Add Medicine</h3>
                         </div>
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                         <div class="card-body">
                             <form action="{{ route('medicine.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
