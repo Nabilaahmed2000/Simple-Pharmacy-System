@@ -3,7 +3,7 @@
 
 <!-- yeild body -->
 @foreach ($drugs as $drug)
-@php    
+@php
         $id=$drug->id ;
         $name=$drug->name;
         $quantity=$drug->quantity;
@@ -89,7 +89,7 @@
                                     <button type="submit" class="btn btn-info">Update Medicine</button>
                                 </div>
 <<<<<<< HEAD
-                            </form> 
+                            </form>
 =======
                             </form>
 >>>>>>> 39bf5f0004de4d2382b135b2cf2a87118574da6d

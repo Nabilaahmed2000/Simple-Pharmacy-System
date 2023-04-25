@@ -108,12 +108,14 @@
 <script src="{{ asset ('adminAssets/js/adminlte.min.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset ('adminAssets/js/demo.js')}}"></script>
+<!-- bs-custom-file-input -->
+<script src="{{ asset ('adminAssets/plugins/bs-custom-file-input/bs-custom-file-input.min.js')}}"></script>
 <!-- Page specific script -->
 <script>
   $(function () {
     $("#example1").DataTable({
       "responsive": true, "lengthChange": false, "autoWidth": false,
-      
+
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
     $('#example2').DataTable({
       "paging": true,
@@ -124,6 +126,13 @@
       "autoWidth": false,
       "responsive": true,
     });
+    //Date picker
+    $('#reservationdate').datetimepicker({
+        format: 'L'
+    });
+    $(function () {
+  bsCustomFileInput.init();
+});
   });
 </script>
 </body>
