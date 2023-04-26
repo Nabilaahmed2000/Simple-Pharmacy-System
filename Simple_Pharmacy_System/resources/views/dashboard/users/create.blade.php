@@ -9,7 +9,16 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Users</h1>
+                        <h1>User</h1>
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -59,12 +68,14 @@
 
                                     <div class="form-group">
                                         <div class="custom-control custom-radio pr-4 d-inline-block">
-                                          <input class="custom-control-input" type="radio" id="customRadio1" value="male" name="gender">
-                                          <label for="customRadio1" class="custom-control-label">Male</label>
+                                            <input class="custom-control-input" type="radio" id="customRadio1"
+                                                value="Male" name="gender">
+                                            <label for="customRadio1" class="custom-control-label">Male</label>
                                         </div>
                                         <div class="custom-control custom-radio pl-4 d-inline-block">
-                                          <input class="custom-control-input" type="radio" id="customRadio2" value="female" name="gender" checked>
-                                          <label for="customRadio2" class="custom-control-label">Female</label>
+                                            <input class="custom-control-input" type="radio" id="customRadio2"
+                                                value="Female" name="gender" checked>
+                                            <label for="customRadio2" class="custom-control-label">Female</label>
                                         </div>
                                     </div>
                                     {{-- Date --}}
@@ -75,8 +86,8 @@
                                                 data-toggle="datetimepicker">
                                                 <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                             </div>
-                                            <input type="text" name="date_of_birth" class="form-control datetimepicker-input"
-                                                data-target="#reservationdate" />
+                                            <input type="text" name="date_of_birth"
+                                                class="form-control datetimepicker-input" data-target="#reservationdate" />
 
                                         </div>
                                     </div>
@@ -100,7 +111,7 @@
                                             <span class="input-group-text"><i class="fa-solid fa-lock"></i></span>
                                         </div>
                                         <input type="password" class="form-control" placeholder="Confirm Password"
-                                            name="confPassword">
+                                            name="password_confirmation">
                                     </div>
                                     {{-- Image --}}
                                     <div class="input-group mb-3">
@@ -108,7 +119,8 @@
                                             <span class="input-group-text"><i class="fa-solid fa-image"></i></span>
                                         </div>
                                         <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="image" name="image">
+                                            <input type="file" class="custom-file-input" id="image"
+                                                name="image">
                                             <label class="custom-file-label" for="image">Choose file</label>
                                         </div>
                                     </div>

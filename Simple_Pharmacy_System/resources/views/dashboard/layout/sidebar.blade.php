@@ -14,7 +14,7 @@
           <img src="{{ asset ('adminAssets/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="{{ route('dashboard.admin.show',1) }}" class="d-block">Alexander Pierce</a>
+          <a href="{{ route('admin.show',1) }}" class="d-block">Alexander Pierce</a>
         </div>
       </div>
 

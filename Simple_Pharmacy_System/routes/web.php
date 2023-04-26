@@ -91,9 +91,9 @@ Route::prefix('dashboard')->group(function () {
     Route::get('/order/{order}', [OrderController::class, 'show'])->name('dashboard.order.show');
 
     //**************admin routes******************
-    Route::get('/admin/{admin}/edit', [AdminController::class, 'edit'])->name('dashboard.admin.edit');
-    Route::put('/admin/{admin}', [AdminController::class, 'update'])->name('dashboard.admin.update');
-    Route::get('/admin/{admin}', [AdminController::class, 'show'])->name('dashboard.admin.show');
+    Route::get('/admin/{admin}/edit', [AdminController::class, 'edit'])->name('admin.edit');
+    Route::put('/admin/{admin}', [AdminController::class, 'update'])->name('admin.update');
+    Route::get('/admin/{admin}', [AdminController::class, 'show'])->name('admin.show');
 
     //*************** report routes ******************************
 

@@ -14,7 +14,7 @@
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="/">Home</a></li>
-                            <li class="breadcrumb-item active"><a href="/dashboard/users">Users</a></li>
+                            <li class="breadcrumb-item active"><a href="/dashboard/users">User Profile</a></li>
                             <li class="breadcrumb-item"><a href="{{route('users.edit',$user['id'] )}}">Edit</a></li>
                         </ol>
                     </div>

@@ -22,7 +22,16 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Users</h1>
+                        <h1>User</h1>
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -39,23 +48,23 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
-
                         <div class="card card-info">
                             <div class="card-header">
                                 <h3 class="card-title">Update User</h3>
                             </div>
                             <div class="card-body">
                                 {{-- $user['id'] --}}
-                                <form action="{{ route('users.update', 1) }}" method="POST">
+                                <form action="{{ route('users.update', $id) }}" method="POST"
+                                    enctype="multipart/form-data">
                                     @csrf
                                     @method('PUT')
-                                    <div class="input-group mb-3">
+                                    {{-- <div class="input-group mb-3">
                                         <div class="input-group-append">
                                             <span class="input-group-text"><i class="fa-solid fa-check"></i></span>
                                         </div>
                                         <input type="text" class="form-control" disabled placeholder="National Id"
                                             value="{{ $id }}" name="id">
-                                    </div>
+                                    </div> --}}
 
                                     <div class="input-group mb-3">
                                         <div class="input-group-append">
@@ -69,18 +78,21 @@
                                         <div class="input-group-append">
                                             <span class="input-group-text"><i class="fa-solid fa-user"></i></span>
                                         </div>
-                                        <input type="text" class="form-control" placeholder="Name" value="{{ $name }}" name="name">
+                                        <input type="text" class="form-control" placeholder="Name"
+                                            value="{{ $name }}" name="name">
                                     </div>
 
                                     <div class="form-group">
                                         <div class="custom-control custom-radio pr-4 d-inline-block">
                                             <input class="custom-control-input" type="radio" id="customRadio1"
-                                                value="male" @if($gender == "Male") checked @endif name="gender">
+                                                value="Male" @if ($gender == 'Male') checked @endif
+                                                name="gender">
                                             <label for="customRadio1" class="custom-control-label">Male</label>
                                         </div>
                                         <div class="custom-control custom-radio pl-4 d-inline-block">
                                             <input class="custom-control-input" type="radio" id="customRadio2"
-                                                value="female" @if($gender == "Female") checked @endif name="gender">
+                                                value="Female" @if ($gender == 'Female') checked @endif
+                                                name="gender">
                                             <label for="customRadio2" class="custom-control-label">Female</label>
                                         </div>
                                     </div>
@@ -101,14 +113,16 @@
                                         <div class="input-group-append">
                                             <span class="input-group-text"><i class="fa-solid fa-phone"></i></span>
                                         </div>
-                                        <input type="phone" class="form-control" placeholder="Phone" value="{{ $phone }}" name="phone">
+                                        <input type="phone" class="form-control" placeholder="Phone"
+                                            value="{{ $phone }}" name="phone">
                                     </div>
 
                                     <div class="input-group mb-3">
                                         <div class="input-group-append">
                                             <span class="input-group-text"><i class="fa-solid fa-lock"></i></span>
                                         </div>
-                                        <input type="password" class="form-control" placeholder="Password" value="{{ $password }}" name="password">
+                                        <input type="password" class="form-control" placeholder="Password"
+                                            value="{{ $password }}" name="password">
                                     </div>
 
                                     <div class="input-group mb-3">
@@ -116,7 +130,7 @@
                                             <span class="input-group-text"><i class="fa-solid fa-lock"></i></span>
                                         </div>
                                         <input type="password" class="form-control" placeholder="Confirm Password"
-                                            value="{{ $password }}" name="confPassword">
+                                            value="{{ $password }}" name="password_confirmation">
                                     </div>
                                     {{-- Image --}}
                                     <div class="input-group mb-3">
@@ -124,12 +138,13 @@
                                             <span class="input-group-text"><i class="fa-solid fa-image"></i></span>
                                         </div>
                                         <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="image" value="{{ $image }}" name="image">
-                                            <label class="custom-file-label" for="image">{{ $image }}</label>
+                                            <input type="file" class="custom-file-input" id="image"
+                                                name="image">
+                                            <label class="custom-file-label" for="image">Choose file</label>
                                         </div>
                                     </div>
                                     <div class="input-group mb-3">
-                                        <button type="submit" class="btn btn-info">Update Doctor</button>
+                                        <button type="submit" class="btn btn-info">Update User</button>
                                     </div>
                                 </form>
                             </div>
