@@ -30,7 +30,7 @@
 <div class="card card-info">
     <div class="card-header">
       <h3 class="card-title">Add Doctor</h3>
-    </div>
+    </div>z
     <div class="card-body">
         <form action="{{route('doctors.store')}}" method="post" enctype="multipart/form-data">
             @csrf

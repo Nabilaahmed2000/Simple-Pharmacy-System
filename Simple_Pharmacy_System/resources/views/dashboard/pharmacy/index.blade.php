@@ -13,8 +13,8 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Pharmacies</li>
+                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                        <li class="breadcrumb-item active"><a href="{{route('pharmacy.index')}}">Pharmacies</a></li>
                     </ol>
                 </div>
             </div>
@@ -39,26 +39,31 @@
                                         <th>Name</th>
                                         <th>Area</th>
                                         <th>Priority</th>
-                                        <th>Owner</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>name</td>
-                                        <td>area</td>
-                                        <td>Priority</td>
-                                        <td>Owner</td>
-                                        <td>
-                                            <a href="{{route('pharmacy.show',1 )}}" class="btn btn-primary">View</a>
-                                            <a href="{{route('pharmacy.edit',1 )}}" class="btn btn-success">Edit</a>
-                                            <form action="{{ route('pharmacy.destroy', 4) }}" method="POST" class="d-inline">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-danger">Delete</button>
-                                            </form>
-                                      </td>
-                                    </tr>
+                                <tbody>                                
+                                    @foreach ($allPharmacies as $pharmacy)
+                                    {{-- @if($pharmacy->doctor->name != null) --}}
+                                        <tr>
+                                            <td>{{$pharmacy['name']}}</td>
+                                            <td>{{$pharmacy->area->name}}</td>
+                                            <td>{{$pharmacy['priority']}}</td>
+                                            <td>
+                                                <a href="{{route('pharmacy.show',$pharmacy['id'])}}" class="btn btn-primary">View</a>
+                                                <a href="{{route('pharmacy.edit',$pharmacy['id'])}}" class="btn btn-success">Edit</a>
+                                                <form action="{{route('pharmacy.destroy',$pharmacy['id']) }}" method="POST" class="d-inline">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    {{-- @else --}}
+                                        {{-- <tr><p> sorry, u need to be there doctor in DB first to show current pharmacy </p></tr> --}}
+                                    {{-- @endif --}}
+                                    @endforeach
+
                                 </tbody>
 
                             </table>

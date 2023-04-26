@@ -23,7 +23,8 @@ class Pharmacy extends Model
     // error (Habd)
     public function owner()
     {
-        return $this->hasOne(Doctor::class)->hasRole('owner');
+        return $this->hasOne(Doctor::class);
+        // ->hasRole('owner');
     }
 
     public function doctors()

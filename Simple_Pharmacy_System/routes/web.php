@@ -26,7 +26,7 @@ Route::get('/', function () {
 
 
 
-Route::prefix('dashboard')->group(function () {
+Route::prefix('dashboard')->group(function () { 
     //*************pharmacy owner routes */
     Route::get('/pharmacyOwners', [PharmacyOwnerController::class, 'index'])->name('pharmacyOwners.index');
     Route::get('/pharmacyOwners/create', [PharmacyOwnerController::class, 'create'])->name('pharmacyOwners.create');
@@ -60,10 +60,12 @@ Route::prefix('dashboard')->group(function () {
     Route::get('/pharmacy', [PharmacyController::class, 'index'])->name('pharmacy.index');
     Route::get('/pharmacy/create', [PharmacyController::class, 'create'])->name('pharmacy.create');
     Route::post('/pharmacy', [PharmacyController::class, 'store'])->name('pharmacy.store');
+    Route::get('/pharmacy/{pharmacy}', [PharmacyController::class, 'show'])->name('pharmacy.show');
     Route::get('/pharmacy/{pharmacy}/edit', [PharmacyController::class, 'edit'])->name('pharmacy.edit');
     Route::put('/pharmacy/{pharmacy}', [PharmacyController::class, 'update'])->name('pharmacy.update');
     Route::delete('/pharmacy/{pharmacy}', [PharmacyController::class, 'destroy'])->name('pharmacy.destroy');
-    Route::get('/pharmacy/{pharmacy}', [PharmacyController::class, 'show'])->name('pharmacy.show');
+
+    
 
     //**************medicine routes******************
     Route::get('/medicine', [MedicineController::class, 'index'])->name('medicine.index');
