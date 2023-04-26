@@ -13,9 +13,9 @@
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Pharmacy</li>
-                        </ol>
+                            <li class="breadcrumb-item"><a href="/">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{{route('pharmacy.index')}}">All Pharmacies</a></li>
+                            <li class="breadcrumb-item active"><a href="{{route('pharmacy.edit',$pharmacy->id)}}">Edit Pharmacy </a></li>                                   </ol>
                     </div>
                 </div>
             </div><!-- /.container-fluid -->
@@ -26,44 +26,41 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
-
                         <div class="card card-info">
                             <div class="card-header">
                                 <h3 class="card-title">Update Pharmacy</h3>
                             </div>
+                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
                             <div class="card-body">
-                                {{-- $pharmacy['id'] --}}
-                                <form action="{{ route('pharmacy.update',1 ) }}" method="POST">
+                                <form action="{{route('pharmacy.update', $pharmacy->id)}}" method="POST">
                                     @csrf
                                     @method('PUT')
-                                    <div class="input-group mb-3">
-                                        <input type="text" class="form-control" placeholder="Name" name="name">
-                                        <div class="input-group-append">
-                                            <span class="input-group-text"><i class="fas fa-check"></i></span>
-                                        </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Pharmacy Name</label>
+                                        <input type="text" value="{{$pharmacy['name']}}"  class="form-control" placeholder="Name" name="name">
                                     </div>
 
-                                    <div class="input-group mb-3">
-                                        <input type="text" class="form-control" placeholder="Area" name="area">
-                                        <div class="input-group-append">
-                                            <span class="input-group-text"><i class="fas fa-check"></i></span>
-                                        </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Area ID</label>
+
+                                        <input type="text" value="{{$pharmacy->area->id}}" class="form-control" placeholder="Area" name="area_id">
                                     </div>
 
-                                    <div class="input-group mb-3">
-                                        <input type="text" class="form-control" placeholder="Priority" name="priority">
-                                        <div class="input-group-append">
-                                            <span class="input-group-text"><i class="fas fa-check"></i></span>
-                                        </div>
-                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Priority Number</label>
 
-                                    <div class="input-group mb-3">
-                                        <input type="text" class="form-control" placeholder="Owner" name="owner">
-                                        <div class="input-group-append">
-                                            <span class="input-group-text"><i class="fas fa-check"></i></span>
-                                        </div>
+                                        <input type="text" value="{{$pharmacy['priority']}}" class="form-control" placeholder="Priority" name="priority">
                                     </div>
-                                    <div class="input-group mb-3">
+                                    
+                                    <div class="mb-3">
                                         <button type="submit" class="btn btn-info">Update Pharmacy</button>
                                     </div>
                                 </form>

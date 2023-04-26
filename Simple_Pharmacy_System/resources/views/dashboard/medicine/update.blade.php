@@ -93,7 +93,12 @@
                                 <div class="input-group mb-3">
                                     <button type="submit" class="btn btn-info">Update Medicine</button>
                                 </div>
-                            </form> 
+<<<<<<< HEAD
+                            </form>
+=======
+                            </form>
+>>>>>>> 39bf5f0004de4d2382b135b2cf2a87118574da6d
+                            </form>
                         </div>
                     </div>
                 </div>
