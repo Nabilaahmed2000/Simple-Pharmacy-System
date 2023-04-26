@@ -9,6 +9,8 @@ use App\Http\Controllers\MedicineController;
 use App\Http\Controllers\AreaController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\UserAddressController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -99,5 +101,6 @@ Route::prefix('dashboard')->group(function () {
 
     //*************** report routes ******************************
 
-
+    //**************admin routes******************
+    Route::resource('userAddress', UserAddressController::class);
 });

@@ -15,7 +15,9 @@
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="/">Home</a></li>
                             <li class="breadcrumb-item active"><a href="/dashboard/users">User Profile</a></li>
-                            <li class="breadcrumb-item"><a href="{{route('users.edit',$user['id'] )}}">Edit</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('users.edit', $user['id']) }}">Edit</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('userAddress.show', $user['id']) }}">Addresses</a>
+                            </li>
                         </ol>
                     </div>
                 </div>
@@ -34,7 +36,7 @@
                                 <h5 class="widget-user-desc">{{ $user['email'] }}</h5>
                             </div>
                             <div class="widget-user-image">
-                                <img class="img-circle elevation-2" src="{{ asset('images/users/'.$user['image']) }}"
+                                <img class="img-circle elevation-2" src="{{ asset('images/users/' . $user['image']) }}"
                                     alt="User Avatar">
                             </div>
                             <div class="card-footer">

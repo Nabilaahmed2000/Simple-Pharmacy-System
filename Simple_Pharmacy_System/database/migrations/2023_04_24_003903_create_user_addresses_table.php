@@ -19,7 +19,7 @@ return new class extends Migration
             $table->integer('building_number');
             $table->integer('floor_number');
             $table->integer('flat_number');
-            $table->boolean('is_main');
+            $table->boolean('is_main')->default(false)->change();
             $table->timestamps();
         });
     }

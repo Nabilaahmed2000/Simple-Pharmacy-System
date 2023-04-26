@@ -23,8 +23,8 @@ class UserUpdateRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'password' => 'required|string|min:8|confirmed',
-            'national_id' =>'required|string|size:14,' . $this->id,
+            'password' => 'required|string|min:6|confirmed',
+            'national_id' => 'required|string|size:14,' . $this->id,
             'gender' => 'required|in:Male,Female,Other',
             'date_of_birth' => 'nullable|date',
             'phone' => 'required|string|size:11',
