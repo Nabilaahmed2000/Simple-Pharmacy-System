@@ -37,14 +37,32 @@ class PermissionSeeder extends Seeder
 //        $user->givePermissionTo($create_order);
 
 //        Area::create([
-//            'name' => 'Test Area',
+//            'name' => 'Test Area1',
 //            'country_id' =>10,
+//        ]);
+//        Area::create([
+//            'name' => 'Test Area2',
+//            'country_id' =>4,
+//        ]);
+//        Area::create([
+//            'name' => 'Test Area3',
+//            'country_id' =>8,
 //        ]);
 //
 //        Pharmacy::create([
-//            'name' => 'Test Pharmacy',
+//            'name' => 'Pharmacy1',
+//            'area_id' => 1,
+//            'priority' =>1,
+//        ]);
+//        Pharmacy::create([
+//            'name' => 'Pharmacy2',
 //            'area_id' => 2,
 //            'priority' =>2,
+//        ]);
+//        Pharmacy::create([
+//            'name' => 'Pharmacy3',
+//            'area_id' => 3,
+//            'priority' =>3,
 //        ]);
 
 //
@@ -55,8 +73,8 @@ class PermissionSeeder extends Seeder
 //            'password' => '123456789',
 //            'pharmacy_id' =>2,
 //            'image' => '1.jpg',
-//
-//
+
+
 //        ])->assignRole('owner');
 //        Doctor::create([
 //            'name' => 'mariam Doctor',

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('image');
             $table->boolean('is_banned')->default(false);
+            $table->foreignId('pharmacy_id')->constrained('pharmacies')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

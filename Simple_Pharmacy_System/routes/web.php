@@ -44,6 +44,8 @@ Route::prefix('dashboard')->group(function () {
     Route::get('/doctors/{doctor}/edit', [DoctorController::class, 'edit'])->name('doctors.edit');
     Route::put('/doctors/{doctor}', [DoctorController::class, 'update'])->name('doctors.update');
     Route::delete('/doctors/{doctor}', [DoctorController::class, 'destroy'])->name('doctors.destroy');
+    Route::put('/doctors/{doctor}/ban', [DoctorController::class, 'banned'])->name('doctors.banned');
+    Route::put('/doctors/{doctor}/unban', [DoctorController::class, 'unbanned'])->name('doctors.unbanned');
 
     //**************users routes******************
     Route::get('/users', [UserController::class, 'index'])->name('users.index');

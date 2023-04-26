@@ -108,4 +108,28 @@ class DoctorController extends Controller
         $doctor->delete();
         return redirect()->route('doctors.index');
     }
+
+    public function banned(Doctor $doctor)
+    {
+//        dd($doctor->isBanned()) ;
+        $doctor->update([
+            'is_banned' => true,
+            'banned_at' => now(),
+        ]);
+        $doctor->ban([
+            'expired_at' => '+1 month',
+            'comment' => 'Enjoy your ban!',
+        ]);
+        return redirect()->route('doctors.index');
+    }
+
+    public function unbanned(Doctor $doctor)
+    {
+        $doctor->update([
+            'is_banned' => false,
+            'banned_at' => null,
+        ]);
+        $doctor->unban();
+        return redirect()->route('doctors.index');
+    }
 }
