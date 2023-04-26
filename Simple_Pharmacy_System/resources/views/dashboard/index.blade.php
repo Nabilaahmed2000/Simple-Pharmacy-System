@@ -1,6 +1,6 @@
 
 <!-- extand alyout.blade.php  -->
-@extends('website.layout.layout')
+@extends('dashboard.layout.layout')
 
 <!-- yeild body -->
 @section('body')

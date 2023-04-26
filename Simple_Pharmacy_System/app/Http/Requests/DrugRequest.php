@@ -27,7 +27,23 @@ class DrugRequest extends FormRequest
             'quantity' => 'required|integer',
             'price' => 'required|integer',
             'type' => 'required|string|max:255|min:3',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            // 'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ];
+    }
+    public function messages()
+    {
+        return [
+            'name.required' => 'Name is Required',
+            'name.min' => 'name minimum lenght is 3',
+            'name.max' => 'name maximum lenght is 255',
+            'quantity.required' => 'Quantity is Required',
+            'price.required' => 'Price is Required',
+            'type.required' => 'Type is Required',
+            'type.min' => 'type minimum lenght is 3',
+            'type.max' => 'type maximum lenght is 255',
+            // 'image.image' => 'image is Required',
+            // 'image.mimes' => 'image must be jpeg,png,jpg,gif,svg',
+            // 'image.max' => 'image maximum size is 2048',
         ];
     }
 }

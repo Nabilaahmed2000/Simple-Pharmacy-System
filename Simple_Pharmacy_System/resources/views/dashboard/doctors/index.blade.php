@@ -35,29 +35,38 @@
                 <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">
                     <thead>
+
                     <tr>
                         <th>Name</th>
                         <th>Email</th>
-                        <th>Image</th>
                         <th>National Id</th>
+                        <th>Pharmacy</th>
                         <th>Is Banned</th>
                         <th>Actions</th>
                     </tr>
+
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>Mariam</td>
-                        <td>mariam@gmail.com</td>
-                        <td><img src="#" /></td>
-                        <td> 44444444444444444444</td>
-                        <td> banned</td>
+                    @foreach($doctors as $doctor)
+                        <tr>
+                        <td>{{$doctor->name}}</td>
+                        <td>{{$doctor->email}}</td>
+                         <td>{{$doctor->national_id}}</td>
+                        <td>{{$doctor->pharmacy->name}}</td>
+                        <td> @if($doctor->is_banned == 0)False @else True  @endif</td>
                         <td>
-                            <a href="#" class="btn btn-primary">View</a>
-                            <a href="#" class="btn btn-success">Edit</a>
-                            <a href="#" class="btn btn-danger">Delete</a>
+                            <a href="{{ route('doctors.show', $doctor['id']) }}" class="btn btn-primary">View</a>
+                            <a href="{{ route('doctors.edit', $doctor['id']) }}" class="btn btn-success">Edit</a>
+                            <form method="POST" action="{{ route('doctors.destroy', $doctor['id']) }}" class="d-inline">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn  btn-danger " onClick="return confirm('Are you sure??')"
+                                        title='Delete'>Delete</button>
+                            </form>
 
                       </td>
                     </tr>
+                    @endforeach
                     </tbody>
                     </table>
                 </div>

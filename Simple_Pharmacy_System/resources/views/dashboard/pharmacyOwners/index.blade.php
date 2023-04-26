@@ -40,22 +40,29 @@
                         <th>Email</th>
                         <th>Image</th>
                         <th>National Id</th>
+                        <th>Is Banned</th>
                         <th>Actions</th>
                     </tr>
                     </thead>
                     <tbody>
+                        @foreach($pharmacyOwners as $pharmacyOwner)
                     <tr>
-                        <td>Mariam</td>
-                        <td>mariam@gmail.com</td>
-                        <td><img src="#" /></td>
-                        <td> 44444444444444444444</td>
+                        <td>{{$pharmacyOwner['name']}}</td>
+                        <td>{{$pharmacyOwner['email']}}</td>
+                        <td><img style="width: 70px;height:auto" src="{{asset ('images/pharmacyOwners/'.$pharmacyOwner->image) }}" alt="User image"></td>
+                        <td> {{$pharmacyOwner['national_id']}}</td>
+                        <td> @if($pharmacyOwner->is_banned == 0)False @else True  @endif</td>
                         <td>
-                            <a href="#" class="btn btn-primary">View</a>
-                            <a href="#" class="btn btn-success">Edit</a>
-                            <a href="#" class="btn btn-danger">Delete</a>
+                            <a href="{{route('pharmacyOwners.show',$pharmacyOwner['id'])}}" class="btn btn-primary">View</a>
+                            <a href="{{route('pharmacyOwners.edit',$pharmacyOwner['id'])}}" class="btn btn-success">Edit</a>
+                            <form method="POST" action="{{route('pharmacyOwners.destroy',$pharmacyOwner->id)}}"  style="display:inline">
+                                {{ csrf_field() }} {{ method_field('DELETE') }}
+                                <button type="submit" id='delete' class="btn btn-danger" onClick="return confirm('are you sure??')">Delete</button>
+                            </form>
 
-                      </td>
+                        </td>
                     </tr>
+                    @endforeach
                     </tbody>
                     </table>
                 </div>
