@@ -63,7 +63,26 @@
                                 <button type="submit" class="btn  btn-danger " onClick="return confirm('Are you sure??')"
                                         title='Delete'>Delete</button>
                             </form>
+                            @if(!$doctor->isBanned())
+                            <form method="POST" action="{{ route('doctors.banned', $doctor['id']) }}" class="d-inline">
+                                @csrf
+                                @method('PUT')
 
+                                <button type="submit" class="btn  btn-warning " onClick="return confirm('Are you sure to block doctor??')"
+                                        title='Delete'>Ban</button>
+
+                            </form>
+                            @else
+
+                                <form method="POST" action="{{ route('doctors.unbanned', $doctor['id']) }}" class="d-inline">
+                                    @csrf
+                                    @method('PUT')
+
+                                    <button type="submit" class="btn  btn-warning " onClick="return confirm('Are you sure to remove block??')"
+                                            title='Delete'>Revoke</button>
+
+                                </form>
+                            @endif
                       </td>
                     </tr>
                     @endforeach
