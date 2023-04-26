@@ -23,7 +23,7 @@ class DoctorStoreRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'national_id' => 'required|string|max:255',
+            'national_id' => 'required|string|size:14',
             'email' => 'required|string|email|max:255|unique:doctors',
             'password' => 'required|string|min:8',
             'image' => 'required|image|mimes:jpg,png|max:2048',

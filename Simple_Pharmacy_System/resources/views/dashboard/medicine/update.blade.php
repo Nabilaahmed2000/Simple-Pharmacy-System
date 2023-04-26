@@ -13,6 +13,7 @@
 @endphp
 @endforeach
 @section('body')
+
 <div class="content-wrapper">
     <!-- /.content-header -->
     <section class="content-header">
@@ -20,6 +21,15 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <h1>Medicine</h1>
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -42,7 +52,7 @@
                             <h3 class="card-title">Update Medicine</h3>
                         </div>
                         <div class="card-body">
-                            <form action="{{ route('dashboard.medicine.update' ,$id) }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('medicine.update' ,$id) }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
 
@@ -62,7 +72,7 @@
 
                                 <div class="input-group mb-3">
                                     <input type="text" class="form-control" placeholder="Type"
-                                        name="type" value="medical">
+                                        name="type" value="{{type}}">
                                     <div class="input-group-append">
                                         <span class="input-group-text"><i class="fas fa-check"></i></span>
                                     </div>
@@ -88,6 +98,7 @@
 =======
                             </form>
 >>>>>>> 39bf5f0004de4d2382b135b2cf2a87118574da6d
+                            </form>
                         </div>
                     </div>
                 </div>

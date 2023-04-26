@@ -3,12 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Cog\Contracts\Ban\Bannable as BannableInterface;
+use Cog\Laravel\Ban\Traits\Bannable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Spatie\Permission\Traits\HasRoles;
 
-class Doctor extends Authenticatable
+class Doctor extends Authenticatable implements  BannableInterface
 {
-    use HasFactory , HasRoles;
+    use HasFactory , HasRoles , Bannable;
     protected $fillable = [
         'national_id',
         'name',
@@ -16,7 +18,8 @@ class Doctor extends Authenticatable
         'password',
         'image',
         'pharmacy_id',
-        'is_baned',
+        'is_banned',
+        'banned_at',
     ];
 
     protected string $guard_name = 'web';

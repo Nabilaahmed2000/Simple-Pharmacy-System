@@ -24,8 +24,10 @@ class DoctorUpdateRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'national_id' => ['required','string','max:255',Rule::unique('doctors', 'national_id')->ignore($this->national_id,'national_id')],
-            'email' => ['required','string','email','max:255',Rule::unique('doctors', 'email')->ignore($this->email,'email')],
+//            'national_id' => ['required','string','max:255',Rule::unique('doctors', 'national_id')->ignore($this->national_id,'national_id')],
+//            'email' => ['required','string','email','max:255',Rule::unique('doctors', 'email')->ignore($this->email,'email')],
+            'national_id' =>'required|string|size:14,' . $this->id,
+            'email' => 'required|email|unique:users,email,' . $this->id,
             'password' => 'nullable|string|min:8',
             'image' => 'nullable|image|mimes:jpg,png|max:2048',
             'pharmacy_id' => 'required|exists:pharmacies,id',

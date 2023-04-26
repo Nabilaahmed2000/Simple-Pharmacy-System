@@ -29,27 +29,29 @@
 <div class="card card-widget widget-user">
     <!-- Add the bg color to the header using any of the bg-* classes -->
     <div class="widget-user-header bg-info">
-      <h3 class="widget-user-username">Alexander Pierce</h3>
-      <h5 class="widget-user-desc">Founder & CEO</h5>
-      <h5 class="widget-user-desc">Banned</h5>
+      <h3 class="widget-user-username"> {{$doctor->name}}</h3>
+        <h5 class="widget-user-desc">Doctor Banned: @if($doctor->is_banned == 0)False @else True  @endif</h5>
+
     </div>
     <div class="widget-user-image">
-      <img class="img-circle elevation-2" src="{{asset('adminAssets/img/user1-128x128.jpg')}}" alt="User Avatar">
+        @if($doctor->image) <img src="{{ asset('/images/doctors/' . $doctor->image) }}" class="img-circle elevation-2" alt="User Avatar">
+        @else <img class="img-circle elevation-2" src="{{asset('adminAssets/img/user1-128x128.jpg')}}" alt="User Avatar">
+        @endif
     </div>
     <div class="card-footer">
       <div class="row">
         <div class="col-sm-4 border-right">
           <div class="description-block">
             <h5 class="description-header">Email</h5>
-            <span class="description-text">user@gmail.com</span>
+            <span class="description-text">{{$doctor->email}}</span>
           </div>
           <!-- /.description-block -->
         </div>
         <!-- /.col -->
         <div class="col-sm-4 border-right">
           <div class="description-block">
-            <h5 class="description-header">Name</h5>
-            <span class="description-text">user name</span>
+            <h5 class="description-header">Work At</h5>
+            <span class="description-text">{{$doctor->pharmacy->name}}</span>
           </div>
           <!-- /.description-block -->
         </div>
@@ -57,8 +59,9 @@
         <div class="col-sm-4">
           <div class="description-block">
             <h5 class="description-header">National Id</h5>
-            <span class="description-text">444444444444</span>
+            <span class="description-text">{{$doctor->national_id}}</span>
           </div>
+
           <!-- /.description-block -->
         </div>
         <!-- /.col -->

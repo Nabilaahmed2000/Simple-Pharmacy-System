@@ -85,27 +85,22 @@ class MedicineController extends Controller
      */
     public function update(DrugRequest $request, string $id)
     {
-        $drug=Drug::find($id);
-        $drug->name = $request->name;
-        $drug->price = $request->price;
-        $drug->quantity = $request->quantity;
-        $drug->type = $request->type;
-
-        // Handle the image upload (if there is one)
-        // dd($request);
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $filename = $image->getClientOriginalName();
-            $image->storeAs('images/drugs', $filename);
-            $drug->image = $filename;
+        $drug = Drug::find($id);
+        $drug->update($request->except('image'));
+        if ($request->hasFile('image')  ) {
+            $old_image = $drug->image;
+            $image = $request->image;
+            $image_new_name = time() .'.'. $image->getClientOriginalExtension();
+            $image->move('images/drugs', $image_new_name);
+            if ($old_image) {
+                unlink("images/drugs/".$old_image);
+            }
+            $drug->image = $image_new_name;
         }
-        // Save the updated drug to the database
-        $drug->save();
-        // return redirect()->route('dashboard.medicine.index');
-        //
-        return redirect()->route('medicine.index');
-    }
 
+            $drug->save();
+            return redirect()->route('medicine.index');
+    }
     /**
      * Remove the specified resource from storage.
      */

@@ -38,36 +38,43 @@
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
-                                            <th>National Id</th>
+                                            <th>ID</th>
                                             <th>Name</th>
+                                            <th>National Id</th>
                                             <th>Email</th>
                                             <th>gender</th>
                                             <th>Date of Birth</th>
                                             <th>phone</th>
-                                            <th>Address</th>
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Habiba</td>
-                                            <td>habiba@gmail.com</td>
-                                            <td>F</td>
-                                            <td>2000/11/05</td>
-                                            <td>01234567890</td>
-                                            <td>Xxx,ww,z</td>
-                                            <td>
-                                                <a href="{{route('users.show',1 )}}" class="btn btn-primary">View</a>
-                                                <a href="{{route('users.edit',1 )}}" class="btn btn-success">Edit</a>
-                                                {{-- <a href="{{route('users.destroy',4)}}" class="btn btn-danger">Delete</a> --}}
-                                                <form action="{{ route('users.destroy', 4) }}" method="POST" class="d-inline">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger">Delete</button>
-                                                </form>
-                                          </td>
-                                        </tr>
+
+                                        @if ($users)
+                                            @foreach ($users as $user)
+                                                <tr>
+                                                    <td>{{ $user['id'] }}</td>
+                                                    <td>{{ $user['name'] }}</td>
+                                                    <td>{{ $user['national_id'] }}</td>
+                                                    <td>{{ $user['email'] }}</td>
+                                                    <td>{{ $user['gender'] }}</td>
+                                                    <td>{{ $user['date_of_birth'] }}</td>
+                                                    <td>{{ $user['phone'] }}</td>
+                                                    <td>
+                                                        <a href="{{ route('users.show', $user['id']) }}"
+                                                            class="btn btn-primary">View</a>
+                                                        <a href="{{ route('users.edit', $user['id']) }}"
+                                                            class="btn btn-success">Edit</a>
+                                                        <form action="{{ route('users.destroy', $user['id']) }}"
+                                                            method="POST" class="d-inline">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                                        </form>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        @endif
                                     </tbody>
 
                                 </table>
