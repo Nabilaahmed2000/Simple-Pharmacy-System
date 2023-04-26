@@ -15,9 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->foreignId('area_id')->constrained('areas')->onDelete('cascade')->onUpdate('cascade');
-            $table->integer('priority')->default(0);
-            $table->foreignId('doctor_id')->constrained('doctors')->onDelete('cascade')->onUpdate('cascade');
-            $table->softDeletes();
+            $table->integer('priority')->default(0);            $table->softDeletes();
             $table->timestamps();
         });
     }

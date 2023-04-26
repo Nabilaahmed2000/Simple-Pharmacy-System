@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PharmacyRequest;
+use App\Http\Requests\PharmacyUpdateRequest;
 use App\Models\Pharmacy;
 use Illuminate\Http\Request;
 
@@ -13,7 +14,8 @@ class PharmacyController extends Controller
      */
     public function index()
     {
-        return view('dashboard.pharmacy.index');
+        $allPharmacies = Pharmacy::all();
+        return view('dashboard.pharmacy.index',compact('allPharmacies'));
     }
 
     /**
@@ -28,37 +30,39 @@ class PharmacyController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(PharmacyRequest $request)
     {
-
-
-        $pharmacy = Pharmacy::create($request->all());
+        Pharmacy::create($request->all());
+        return redirect()->route('pharmacy.index');
 
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Pharmacy $pharmacy)
+    public function show(int $id)
     {
+        $pharmacy = Pharmacy::find($id);
         return view('dashboard.pharmacy.show', compact('pharmacy'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Pharmacy $pharmacy)
+    public function edit(int $id)
     {
-        return view('dashboard.pharmacy.edit', compact('pharmacy'));
+        $pharmacy = Pharmacy::find($id);
+        return view('dashboard.pharmacy.update', compact('pharmacy'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(PharmacyRequest $request, Pharmacy $pharmacy)
+    public function update(PharmacyUpdateRequest $request, Pharmacy $pharmacy)
     {
+        // dd($request->all());
         $pharmacy->update($request->all());
-        return redirect()->route('dashboard.pharmacy.index');
+        return redirect()->route('pharmacy.index');
     }
 
     /**
@@ -67,6 +71,6 @@ class PharmacyController extends Controller
     public function destroy(Pharmacy $pharmacy)
     {
         $pharmacy->delete();
-        return redirect()->route('dashboard.pharmacy.index');
+        return redirect()->route('pharmacy.index');
     }
 }
