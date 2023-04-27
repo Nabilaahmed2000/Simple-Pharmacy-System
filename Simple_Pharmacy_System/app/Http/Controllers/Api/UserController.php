@@ -1,11 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\UserStoreRequest;
+use App\Http\Requests\UserUpdateApiRequest;
 use App\Http\Requests\UserUpdateRequest;
-use App\Models\User;
+use App\Http\Resources\UserResource;
 use Illuminate\Http\Request;
+use App\Models\User;
 use Nette\Utils\DateTime;
 
 class UserController extends Controller
@@ -15,8 +18,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::paginate(10);
-        return view('dashboard.users.index', ['users' => $users]);
+        $users = User::all();
+        return UserResource::collection($users);
     }
 
     /**
@@ -24,7 +27,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('dashboard.users.create');
+
     }
 
     /**
@@ -32,32 +35,36 @@ class UserController extends Controller
      */
     public function store(UserStoreRequest $request)
     {
+
+        if ($request->hasFile('image')) {
+            $file_extension = $request->image->getClientOriginalExtension();
+            $file_name = time() . '.' . $file_extension;
+            $path = 'images/users';
+            $request->file('image')->move($path, $file_name);
+        }
         $data = $request->all();
-        $file_extension = $request->image->getClientOriginalExtension();
-        $file_name = time() . '.' . $file_extension;
-        $path = 'images/users';
-        $request->file('image')->move($path, $file_name);
         $date = DateTime::createFromFormat('m/d/Y', $data['date_of_birth']);
-        User::create([
+        $user = User::create([
             'name' => $data['name'],
             'national_id' => $data['national_id'],
             'email' => $data['email'],
             'gender' => $data['gender'],
-            'date_of_birth' => $date->format('Y-m-d'),
+            'date_of_birth' =>  $date->format('Y-m-d'),
             'phone' => $data['phone'],
             'password' => $data['password'],
             'image' => $file_name
         ]);
-        return redirect()->route('users.index');
+        return $user;
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(User $user)
     {
-        $user = User::find($id);
-        return view('dashboard.users.show', ['user' => $user]);
+
+        return new UserResource($user);
+
     }
 
     /**
@@ -65,18 +72,16 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        $user = User::all()->where('id', $id);
-        return view('dashboard.users.update', ['user' => $user]);
+        //
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UserUpdateRequest $request, string $id)
+    public function update(UserUpdateApiRequest $request, User $user)
     {
-        // $id = $request->id;
-        $user = User::find($id);
-        $user->update($request->except('image', 'date_of_birth'));
+
+//       $user->update($request->except('image', 'date_of_birth' , 'email'));
         if ($request->date_of_birth) {
             $date = DateTime::createFromFormat('m/d/Y', $request->date_of_birth);
             $user->date_of_birth = $date->format('Y-m-d');
@@ -91,21 +96,26 @@ class UserController extends Controller
             }
             $user->image = $image_new_name;
         }
+        $user->update([
+//           'name'=>$request->name ,
+            'gender'=>$request->gender,
+
+        ]);
         $user->save();
-        return redirect()->route('users.index');
+        return $user;
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(User $user)
+        public function destroy(User $user)
     {
         $old_image = User::find($user->id)->image;
         if($old_image) {
             unlink("images/users/" . $old_image);
         }
         $user->delete();
-        $users = User::paginate(10);
-        return view('dashboard.users.index', ['users' => $users]);
+
+        return response()->json(['message' => 'User deleted successfully']);
     }
 }
